@@ -1,23 +1,15 @@
 {
   "name": "base-monitor",
   "version": "1.0.0",
-  "private": true,
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/cli.js",
-    "collect:base": "node src/collectors/baseCollector.js",
-    "collect:farcaster": "node src/collectors/farcasterCollector.js",
-    "analyze": "node src/analyzer/analyze.js",
-    "test": "mocha --exit"
+    "start": "node src/index.js",
+    "build": "echo \"Nothing to build. Use npm start instead.\""
   },
   "dependencies": {
-    "ethers": "^6.9.0",
-    "pg": "^8.11.0",
+    "ethers": "^6.14.0",
     "dotenv": "^16.3.1",
-    "node-fetch": "^3.3.2"
-  },
-  "devDependencies": {
-    "mocha": "^10.2.0",
-    "chai": "^4.3.8"
+    "axios": "^1.6.7"
   }
 }
