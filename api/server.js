@@ -1,23 +1,103 @@
 import express from 'express';
 import cors from 'cors';
 import { ethers } from 'ethers';
-import { pool, initDb } from '../src/db/index.js';
-import { CONFIG } from '../src/config.js';
-import { gini } from '../src/utils.js';
+import pg from 'pg';
+import { readFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 
 const app = express();
-const PORT = process.env.PORT || 3001;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
+// Configuration (embedded)
+const CONFIG = {
+  BASE_RPC: process.env.BASE_RPC || 'https://mainnet.base.org',
+  FARCASTER_API_URL: process.env.FARCASTER_API_URL || 'https://api.warpcast.com/v2/recent-casts',
+  NEYNAR_API_KEY: process.env.NEYNAR_API_KEY,
+  NUM_BLOCKS: parseInt(process.env.NUM_BLOCKS || '100', 10),
+  START_BLOCK: parseInt(process.env.START_BLOCK || '0', 10),
+  ALERT_TOP_SHARE: parseFloat(process.env.ALERT_TOP_SHARE || '0.5'),
+  ALERT_WINDOW_HOURS: parseInt(process.env.ALERT_WINDOW_HOURS || '24', 10),
+  REWARD_CONTRACTS: (process.env.REWARD_CONTRACTS || '').split(',').filter(addr => addr.trim()),
+  FARCASTER_CONTRACTS: [
+    '0x4c79b8c9cB0BD62B047880603a9B0c734f1FF0FcF',
+    '0x1fc10ef15e041c5d3c54042e52eb0c54cb9b710c',
+    '0x8dc80a209a3362f0586e6c116973bb6908170c84',
+    '0x6921b130d297cc43754afba22e5eac0fbf8db75b',
+    '0xd15fE25eD0Dba12fE05e7029C88b10C25e8880E3'
+  ],
+  BASE_APP_CONTRACTS: [
+    '0x1986cc18d8ec757447254310d2604f85741aa732'
+  ],
+  FARCASTER_ADDRESSES: [],
+  ENABLE_FARCASTER_BLOCKCHAIN_DETECTION: process.env.ENABLE_FARCASTER_BLOCKCHAIN_DETECTION !== 'false'
+};
+
+// Database setup (embedded)
+const { Pool } = pg;
+const DATABASE_URL = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/base_monitor';
+export const pool = new Pool({ connectionString: DATABASE_URL });
+
+export async function initDb() {
+  try {
+    const schemaSQL = `-- Postgres schema for Base Monitor
+CREATE TABLE IF NOT EXISTS reward_events (
+  id SERIAL PRIMARY KEY,
+  block_number BIGINT,
+  tx_hash TEXT,
+  log_index INTEGER,
+  contract_address TEXT,
+  topics JSONB,
+  data TEXT,
+  block_timestamp TIMESTAMP WITH TIME ZONE,
+  inserted_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+ALTER TABLE reward_events ADD COLUMN IF NOT EXISTS decoded_data JSONB;
+ALTER TABLE reward_events ADD COLUMN IF NOT EXISTS farcaster_related BOOLEAN DEFAULT false;
+ALTER TABLE reward_events ADD COLUMN IF NOT EXISTS farcaster_metadata JSONB;
+
+CREATE INDEX IF NOT EXISTS idx_reward_events_block ON reward_events(block_number);
+CREATE INDEX IF NOT EXISTS idx_reward_events_address ON reward_events(contract_address);
+CREATE INDEX IF NOT EXISTS idx_reward_events_farcaster ON reward_events(farcaster_related) WHERE farcaster_related = true;
+
+CREATE TABLE IF NOT EXISTS farcaster_casts (
+  id TEXT PRIMARY KEY,
+  body JSONB,
+  author TEXT,
+  timestamp TIMESTAMP WITH TIME ZONE,
+  inserted_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_farcaster_author ON farcaster_casts(author);`;
+
+    await pool.query(schemaSQL);
+    console.log('Database schema ensured.');
+  } catch (e) {
+    console.error('Could not initialize DB schema:', e.message);
+    throw e;
+  }
+}
+
+// Utility functions (embedded)
+export function gini(values) {
+  if (!values || values.length === 0) return 0;
+  const arr = Array.from(values).slice().sort((a,b)=>a-b);
+  const n = arr.length;
+  const mean = arr.reduce((s,x)=>s+x,0) / n;
+  if (mean === 0) return 0;
+  let g = 0;
+  for (let i=0;i<n;i++) {
+    g += (2*(i+1) - n - 1) * arr[i];
+  }
+  return g / (n * n * mean);
+}
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
 // Serve static files inline for Vercel
-import fs from 'fs';
 const staticFiles = {
   '/': 'static/index.html',
   '/index.html': 'static/index.html',
@@ -30,7 +110,10 @@ const staticFiles = {
 // Function to serve static files
 function serveStaticFile(req, res, filePath) {
   try {
-    const fullPath = path.join(process.cwd(), filePath);
+    // In Vercel, use the lambda directory as base, otherwise use current working directory
+    const baseDir = process.env.LAMBDA_TASK_ROOT || process.cwd();
+    const fullPath = path.join(baseDir, filePath);
+
     if (fs.existsSync(fullPath)) {
       const content = fs.readFileSync(fullPath, 'utf8');
       const ext = path.extname(filePath);
@@ -42,6 +125,7 @@ function serveStaticFile(req, res, filePath) {
       res.setHeader('Content-Type', contentType);
       res.send(content);
     } else {
+      console.error(`Static file not found: ${fullPath}`);
       res.status(404).send('File not found');
     }
   } catch (error) {
@@ -557,35 +641,3 @@ async function generateHistoricalData() {
 
 // Export for Vercel serverless functions
 export default app;
-
-// Start server only when running locally (not on Vercel)
-if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
-  try {
-    const server = app.listen(PORT, () => {
-      console.log(`🚀 Base Monitor API running on port ${PORT}`);
-      console.log(`📊 Dashboard available at http://localhost:${PORT}`);
-    });
-
-    server.on('error', (error) => {
-      console.error('❌ Server error:', error);
-      process.exit(1);
-    });
-
-  } catch (error) {
-    console.error('❌ Failed to start server:', error);
-    process.exit(1);
-  }
-
-  // Graceful shutdown for local development
-  process.on('SIGTERM', () => {
-    console.log('Shutting down gracefully...');
-    pool.end();
-    process.exit(0);
-  });
-
-  process.on('SIGINT', () => {
-    console.log('Shutting down gracefully...');
-    pool.end();
-    process.exit(0);
-  });
-}
