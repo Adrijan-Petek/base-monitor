@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "outputDirectory": null,
   "functions": {
     "api/server.js": {
       "maxDuration": 30
