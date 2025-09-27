@@ -3,16 +3,5 @@
   "framework": null,
   "buildCommand": null,
   "devCommand": null,
-  "installCommand": "npm install",
-  "functions": {
-    "api/minimal-server.mjs": {
-      "maxDuration": 10
-    }
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/api/minimal-server.mjs"
-    }
-  ]
+  "installCommand": "npm install"
 }
