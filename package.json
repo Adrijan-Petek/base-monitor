@@ -1,8 +1,7 @@
 {
   "name": "base-monitor",
   "version": "1.0.0",
-  "main": "src/index.js",
-  "type": "module",
+  "main": "api/minimal-server.js",
   "scripts": {
     "start": "node api/server.js",
     "api": "node api/server.js",
