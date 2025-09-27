@@ -20,12 +20,12 @@ app.use(express.json());
 // Serve static files inline for Vercel
 import fs from 'fs';
 const staticFiles = {
-  '/': 'public/index.html',
-  '/index.html': 'public/index.html',
-  '/styles.css': 'public/styles.css',
-  '/app.js': 'public/app.js',
-  '/favicon.svg': 'public/favicon.svg',
-  '/apple-touch-icon.svg': 'public/apple-touch-icon.svg'
+  '/': 'static/index.html',
+  '/index.html': 'static/index.html',
+  '/styles.css': 'static/styles.css',
+  '/app.js': 'static/app.js',
+  '/favicon.svg': 'static/favicon.svg',
+  '/apple-touch-icon.svg': 'static/apple-touch-icon.svg'
 };
 
 // Function to serve static files
@@ -68,7 +68,7 @@ async function ensureDbInitialized() {
 
 // Routes
 app.get('/', (req, res) => {
-  serveStaticFile(req, res, 'public/index.html');
+  serveStaticFile(req, res, 'static/index.html');
 });
 
 // Serve other static files
