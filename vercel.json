@@ -2,6 +2,7 @@
   "version": 2,
   "framework": null,
   "buildCommand": null,
+  "outputDirectory": null,
   "devCommand": null,
   "installCommand": "npm install"
 }
