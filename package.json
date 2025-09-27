@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
+    "test": "mocha",
     "build": "echo \"Nothing to build. Use npm start instead.\""
   },
   "dependencies": {
