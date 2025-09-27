@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "buildCommand": null,
   "functions": {
     "api/server.js": {
       "maxDuration": 30
@@ -17,6 +18,5 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "outputDirectory": "public"
+  }
 }
