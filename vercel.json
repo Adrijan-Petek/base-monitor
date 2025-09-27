@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": null,
+  "framework": null,
   "functions": {
     "api/server.js": {
       "maxDuration": 30
