@@ -1,7 +1,6 @@
 {
   "version": 2,
   "framework": null,
-  "buildCommand": null,
   "installCommand": "npm install",
   "functions": {
     "api/server.js": {
