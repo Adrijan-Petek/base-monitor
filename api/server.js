@@ -16,7 +16,40 @@ const __dirname = path.dirname(__filename);
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../public')));
+
+// Serve static files inline for Vercel
+import fs from 'fs';
+const staticFiles = {
+  '/': 'public/index.html',
+  '/index.html': 'public/index.html',
+  '/styles.css': 'public/styles.css',
+  '/app.js': 'public/app.js',
+  '/favicon.svg': 'public/favicon.svg',
+  '/apple-touch-icon.svg': 'public/apple-touch-icon.svg'
+};
+
+// Function to serve static files
+function serveStaticFile(req, res, filePath) {
+  try {
+    const fullPath = path.join(process.cwd(), filePath);
+    if (fs.existsSync(fullPath)) {
+      const content = fs.readFileSync(fullPath, 'utf8');
+      const ext = path.extname(filePath);
+      let contentType = 'text/plain';
+      if (ext === '.html') contentType = 'text/html';
+      else if (ext === '.css') contentType = 'text/css';
+      else if (ext === '.js') contentType = 'application/javascript';
+      else if (ext === '.svg') contentType = 'image/svg+xml';
+      res.setHeader('Content-Type', contentType);
+      res.send(content);
+    } else {
+      res.status(404).send('File not found');
+    }
+  } catch (error) {
+    console.error('Error serving static file:', error);
+    res.status(500).send('Internal server error');
+  }
+}
 
 // Lazy database initialization
 let dbInitialized = false;
@@ -35,7 +68,16 @@ async function ensureDbInitialized() {
 
 // Routes
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+  serveStaticFile(req, res, 'public/index.html');
+});
+
+// Serve other static files
+Object.keys(staticFiles).forEach(route => {
+  if (route !== '/') {
+    app.get(route, (req, res) => {
+      serveStaticFile(req, res, staticFiles[route]);
+    });
+  }
 });
 
 // API Routes
