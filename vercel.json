@@ -6,7 +6,6 @@
   "installCommand": "npm install",
   "functions": {
     "api/minimal-server.mjs": {
-      "runtime": "nodejs18.x",
       "maxDuration": 10
     }
   },
