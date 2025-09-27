@@ -1,12 +1,11 @@
 {
   "name": "base-monitor",
   "version": "1.0.0",
-  "main": "api/minimal-server.js",
+  "main": "api/index.js",
   "type": "module",
   "scripts": {
-    "start": "node api/server.js",
-    "api": "node api/server.js",
-    "dev": "node api/server.js",
+    "start": "node api/index.js",
+    "dev": "node api/index.js",
     "test": "mocha",
     "build": "echo \"Nothing to build. Use npm start instead.\"",
     "daily-scan": "node scripts/daily-scan.js",
