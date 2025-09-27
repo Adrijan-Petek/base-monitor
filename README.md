@@ -1,6 +1,6 @@
 # Base Monitor — Reward & Farcaster Correlation Scanner
 
-[![CI](https://github.com/Adrijan-Petek/base-monitor/actions/workflows/ci.yml/badge.svg)](https://github.com/Adrijan-Petek/base-monitor/actions/workflows/ci.yml)
+[![CI](https://github.com/Adrijan-Petek/base-monitor/actions/workflows/main.yml/badge.svg)](https://github.com/Adrijan-Petek/base-monitor/actions/workflows/main.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A comprehensive monitoring system that scans Base blockchain on-chain logs and Farcaster off-chain activity to detect anomalous reward distributions and correlations. Built for developers who need to monitor decentralized reward systems and social activity patterns.
