@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 import { pool, initDb } from '../db/index.js';
 import { CONFIG } from '../config.js';
 import { gini } from '../utils.js';
@@ -16,6 +16,16 @@ async function loadRecentTransfers(hours = CONFIG.ALERT_WINDOW_HOURS) {
     return res.rows;
   } finally {
     client.release();
+  }
+}
+
+function parseERC20Transfer(log) {
+  try {
+    const iface = new ethers.Interface(['event Transfer(address indexed from, address indexed to, uint256 value)']);
+    const parsed = iface.parseLog({ topics: JSON.parse(log.topics), data: log.data });
+    return { from: parsed.args[0], to: parsed.args[1], value: parsed.args[2].toString() };
+  } catch (e) {
+    return null;
   }
 }
 
@@ -65,6 +75,7 @@ async function analyzeBaseBlockchain() {
   console.log('Gini coefficient:', g.toFixed(4), '(0 = perfect equality, 1 = max inequality)');
   console.log('Top 10% recipients share:', (topShare * 100).toFixed(2) + '%');
 
+  // Check for manipulation patterns
   if (g > 0.8) {
     console.log('🚨 ALERT: Extremely high inequality detected! Possible manipulation.');
   } else if (g > 0.6) {
@@ -77,6 +88,7 @@ async function analyzeBaseBlockchain() {
     console.log('🚨 ALERT: Top recipients control', (topShare * 100).toFixed(2) + '% of rewards!');
   }
 
+  // Show top recipients (up to 100)
   const topRecipientsCount = Math.min(100, sorted.length);
   console.log(`\nTop ${topRecipientsCount} Recipients:`);
   sorted.slice(0, topRecipientsCount).forEach(([address, amount], i) => {
@@ -85,6 +97,7 @@ async function analyzeBaseBlockchain() {
     console.log(`${rank}. ${address}: ${ethers.formatEther(amount)} tokens (${percentage}%)`);
   });
 
+  // Additional analysis metrics
   const top1Percent = Math.max(1, Math.floor(sorted.length * 0.01));
   const top1Sum = sorted.slice(0, top1Percent).reduce((s, c) => s + BigInt(c[1]), 0n);
   const top1Share = Number(top1Sum) / Number(totalVolume);
@@ -98,9 +111,11 @@ async function analyzeBaseBlockchain() {
   console.log('Top 5% of recipients control:', (top5Share * 100).toFixed(2) + '% of rewards');
   console.log('Top 10% of recipients control:', (topShare * 100).toFixed(2) + '% of rewards');
 
+  // Concentration analysis
   const concentrationRatio = Number(sorted[0][1]) / Number(totalVolume);
   console.log('Largest single recipient:', (concentrationRatio * 100).toFixed(2) + '% of total rewards');
 
+  // Manipulation detection heuristics
   let manipulationScore = 0;
   let manipulationReasons = [];
 
@@ -177,6 +192,7 @@ async function analyzeFarcasterRewards() {
       return;
     }
 
+    // Analyze cast frequency by author
     const authorStats = {};
     casts.forEach(cast => {
       const author = cast.author || 'unknown';
@@ -189,12 +205,14 @@ async function analyzeFarcasterRewards() {
     console.log('Unique authors:', Object.keys(authorStats).length);
     console.log('Average casts per author:', (totalCasts / Object.keys(authorStats).length).toFixed(2));
 
+    // Top authors by cast count
     console.log('\nTop 10 Most Active Authors:');
     sortedAuthors.slice(0, 10).forEach(([author, count], i) => {
       const percentage = (count / totalCasts * 100).toFixed(2);
       console.log(`${i+1}. ${author}: ${count} casts (${percentage}%)`);
     });
 
+    // Concentration analysis
     const top10Percent = Math.max(1, Math.floor(sortedAuthors.length * 0.1));
     const top10Sum = sortedAuthors.slice(0, top10Percent).reduce((s, c) => s + c[1], 0);
     const top10Share = top10Sum / totalCasts;
@@ -221,6 +239,7 @@ async function analyzeBaseAppRewards() {
   console.log('💡 Need to discover Base App leaderboard/reward endpoints');
   console.log('🔍 Look for Base App API documentation or reverse-engineer app requests');
 
+  // Placeholder for future implementation
   console.log('\nPlanned analysis will include:');
   console.log('• User reward distributions');
   console.log('• Mini-app engagement rewards');
@@ -238,6 +257,7 @@ async function analyzeBaseBuilderRewards() {
   console.log('💡 Need to discover Base Builder reward distribution systems');
   console.log('🔍 Check Base documentation for builder incentive programs');
 
+  // Placeholder for future implementation
   console.log('\nPlanned analysis will include:');
   console.log('• Builder grant distributions');
   console.log('• Hackathon reward allocations');
@@ -252,6 +272,170 @@ async function analyze() {
   try {
     await initDb();
 
+    // Run separate analysis for each platform
+    await analyzeBaseBlockchain();
+    await analyzeFarcasterRewards();
+    await analyzeBaseAppRewards();
+    await analyzeBaseBuilderRewards();
+
+    console.log('\n' + '='.repeat(50));
+    console.log('✅ Analysis complete for all platforms');
+    console.log('='.repeat(50));
+
+  } catch (error) {
+    console.error('❌ Analysis failed:', error);
+    throw error;
+  } finally {
+    await pool.end();
+  }
+}
+
+async function analyze() {
+  const transfers = await loadRecentTransfers();
+  if (transfers.length === 0) {
+    console.log('No ERC20 Transfer logs in window.');
+    await pool.end();
+    return;
+  }
+
+  const totals = {};
+  let totalVolume = 0n;
+
+  for (const event of transfers) {
+    if (event.decoded_data) {
+      const decoded = event.decoded_data;
+      if (decoded && decoded.to && decoded.amount) {
+        const to = decoded.to.toLowerCase();
+        const amount = BigInt(decoded.amount);
+        totals[to] = (totals[to] || 0n) + amount;
+        totalVolume += amount;
+      }
+    }
+  }
+
+  if (Object.keys(totals).length === 0) {
+    console.log('No valid transfer data found.');
+    await pool.end();
+    return;
+  }
+
+  const amounts = Object.values(totals).map(x => Number(x));
+  const g = gini(amounts);
+  const sorted = Object.entries(totals).sort((a, b) => Number(b[1] - a[1]));
+
+  const topCount = Math.max(1, Math.floor(sorted.length * 0.1));
+  const topSum = sorted.slice(0, topCount).reduce((s, c) => s + BigInt(c[1]), 0n);
+  const topShare = Number(topSum) / Number(totalVolume);
+
+  console.log('=== REWARD DISTRIBUTION ANALYSIS ===');
+  console.log('Time window:', CONFIG.ALERT_WINDOW_HOURS, 'hours');
+  console.log('Total transfers analyzed:', transfers.length);
+  console.log('Unique recipients:', Object.keys(totals).length);
+  console.log('Total volume distributed:', ethers.formatEther(totalVolume), 'tokens');
+  console.log('Gini coefficient:', g.toFixed(4), '(0 = perfect equality, 1 = max inequality)');
+  console.log('Top 10% recipients share:', (topShare * 100).toFixed(2) + '%');
+
+  // Check for manipulation patterns
+  if (g > 0.8) {
+    console.log('🚨 ALERT: Extremely high inequality detected! Possible manipulation.');
+  } else if (g > 0.6) {
+    console.log('⚠️  WARNING: High inequality detected.');
+  } else {
+    console.log('✅ Distribution looks fair.');
+  }
+
+  if (topShare >= CONFIG.ALERT_TOP_SHARE) {
+    console.log('🚨 ALERT: Top recipients control', (topShare * 100).toFixed(2) + '% of rewards!');
+  }
+
+  // Show top recipients (up to 100)
+  const topRecipientsCount = Math.min(100, sorted.length);
+  console.log(`\nTop ${topRecipientsCount} Recipients:`);
+  sorted.slice(0, topRecipientsCount).forEach(([address, amount], i) => {
+    const percentage = (Number(amount) / Number(totalVolume) * 100).toFixed(4);
+    const rank = (i + 1).toString().padStart(3, ' ');
+    console.log(`${rank}. ${address}: ${ethers.formatEther(amount)} tokens (${percentage}%)`);
+  });
+
+  // Additional analysis metrics
+  const top1Percent = Math.max(1, Math.floor(sorted.length * 0.01));
+  const top1Sum = sorted.slice(0, top1Percent).reduce((s, c) => s + BigInt(c[1]), 0n);
+  const top1Share = Number(top1Sum) / Number(totalVolume);
+
+  const top5Percent = Math.max(1, Math.floor(sorted.length * 0.05));
+  const top5Sum = sorted.slice(0, top5Percent).reduce((s, c) => s + BigInt(c[1]), 0n);
+  const top5Share = Number(top5Sum) / Number(totalVolume);
+
+  console.log('\nDetailed Distribution Analysis:');
+  console.log('Top 1% of recipients control:', (top1Share * 100).toFixed(2) + '% of rewards');
+  console.log('Top 5% of recipients control:', (top5Share * 100).toFixed(2) + '% of rewards');
+  console.log('Top 10% of recipients control:', (topShare * 100).toFixed(2) + '% of rewards');
+
+  // Concentration analysis
+  const concentrationRatio = Number(sorted[0][1]) / Number(totalVolume);
+  console.log('Largest single recipient:', (concentrationRatio * 100).toFixed(2) + '% of total rewards');
+
+  // Manipulation detection heuristics
+  let manipulationScore = 0;
+  let manipulationReasons = [];
+
+  if (g > 0.95) {
+    manipulationScore += 3;
+    manipulationReasons.push('Extreme Gini coefficient (>0.95)');
+  } else if (g > 0.85) {
+    manipulationScore += 2;
+    manipulationReasons.push('Very high Gini coefficient (>0.85)');
+  } else if (g > 0.75) {
+    manipulationScore += 1;
+    manipulationReasons.push('High Gini coefficient (>0.75)');
+  }
+
+  if (top1Share > 0.5) {
+    manipulationScore += 3;
+    manipulationReasons.push('Top 1% controls >50% of rewards');
+  } else if (top1Share > 0.3) {
+    manipulationScore += 2;
+    manipulationReasons.push('Top 1% controls >30% of rewards');
+  } else if (top1Share > 0.2) {
+    manipulationScore += 1;
+    manipulationReasons.push('Top 1% controls >20% of rewards');
+  }
+
+  if (concentrationRatio > 0.1) {
+    manipulationScore += 2;
+    manipulationReasons.push('Single recipient controls >10% of rewards');
+  } else if (concentrationRatio > 0.05) {
+    manipulationScore += 1;
+    manipulationReasons.push('Single recipient controls >5% of rewards');
+  }
+
+  console.log('\n=== MANIPULATION RISK ASSESSMENT ===');
+  if (manipulationScore >= 5) {
+    console.log('🚨 CRITICAL: High risk of reward manipulation detected!');
+  } else if (manipulationScore >= 3) {
+    console.log('⚠️  WARNING: Moderate risk of manipulation detected.');
+  } else if (manipulationScore >= 1) {
+    console.log('ℹ️  NOTICE: Some inequality detected, monitor closely.');
+  } else {
+    console.log('✅ Distribution appears fair and decentralized.');
+  }
+
+  if (manipulationReasons.length > 0) {
+    console.log('Reasons for concern:');
+    manipulationReasons.forEach(reason => console.log(`  • ${reason}`));
+  }
+
+  console.log('Manipulation risk score:', manipulationScore, '/ 8');
+}
+
+async function analyze() {
+  console.log('🔍 Starting comprehensive reward manipulation analysis...');
+  console.log('Analysis timestamp:', new Date().toISOString());
+
+  try {
+    await initDb();
+
+    // Run separate analysis for each platform
     await analyzeBaseBlockchain();
     await analyzeFarcasterRewards();
     await analyzeBaseAppRewards();
