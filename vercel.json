@@ -1,8 +1,19 @@
 {
   "version": 2,
+  "framework": null,
+  "buildCommand": null,
+  "devCommand": null,
+  "installCommand": "npm install",
   "functions": {
     "api/minimal-server.mjs": {
-      "runtime": "nodejs18.x"
+      "runtime": "nodejs18.x",
+      "maxDuration": 10
     }
-  }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/minimal-server.mjs"
+    }
+  ]
 }
