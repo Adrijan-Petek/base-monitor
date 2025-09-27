@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "api/minimal-server.js": {
+    "api/minimal-server.mjs": {
       "runtime": "nodejs18.x"
     }
   }
