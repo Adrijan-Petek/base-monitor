@@ -3,18 +3,18 @@
   "framework": null,
   "installCommand": "npm install",
   "functions": {
-    "api/server.js": {
+    "api/minimal-server.js": {
       "maxDuration": 30
     }
   },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/server.js"
+      "dest": "/api/minimal-server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/api/server.js"
+      "dest": "/api/minimal-server.js"
     }
   ]
 }
