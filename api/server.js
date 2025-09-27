@@ -18,13 +18,19 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Initialize database connection
-try {
-  await initDb();
-  console.log('✅ Database initialized successfully');
-} catch (error) {
-  console.error('❌ Database initialization failed:', error);
-  process.exit(1);
+// Lazy database initialization
+let dbInitialized = false;
+async function ensureDbInitialized() {
+  if (!dbInitialized) {
+    try {
+      await initDb();
+      console.log('✅ Database initialized successfully');
+      dbInitialized = true;
+    } catch (error) {
+      console.error('❌ Database initialization failed:', error);
+      throw error;
+    }
+  }
 }
 
 // Routes
@@ -35,6 +41,7 @@ app.get('/', (req, res) => {
 // API Routes
 app.get('/api/analysis', async (req, res) => {
   try {
+    await ensureDbInitialized();
     const analysis = await generateAnalysisData();
     res.json(analysis);
   } catch (error) {
@@ -49,6 +56,7 @@ app.get('/api/analysis', async (req, res) => {
 // Historical data endpoint for 3-month reports
 app.get('/api/historical', async (req, res) => {
   try {
+    await ensureDbInitialized();
     const historicalData = await generateHistoricalData();
     res.json(historicalData);
   } catch (error) {
@@ -506,25 +514,28 @@ async function generateHistoricalData() {
   }
 }
 
-// Start server
-try {
-  const server = app.listen(PORT, () => {
-    console.log(`🚀 Base Monitor API running on port ${PORT}`);
-    console.log(`📊 Dashboard available at http://localhost:${PORT}`);
-  });
+// Export for Vercel serverless functions
+export default app;
 
-  server.on('error', (error) => {
-    console.error('❌ Server error:', error);
+// Start server only when running locally (not on Vercel)
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  try {
+    const server = app.listen(PORT, () => {
+      console.log(`🚀 Base Monitor API running on port ${PORT}`);
+      console.log(`📊 Dashboard available at http://localhost:${PORT}`);
+    });
+
+    server.on('error', (error) => {
+      console.error('❌ Server error:', error);
+      process.exit(1);
+    });
+
+  } catch (error) {
+    console.error('❌ Failed to start server:', error);
     process.exit(1);
-  });
+  }
 
-} catch (error) {
-  console.error('❌ Failed to start server:', error);
-  process.exit(1);
-}
-
-// Graceful shutdown
-if (process.env.NODE_ENV === 'production') {
+  // Graceful shutdown for local development
   process.on('SIGTERM', () => {
     console.log('Shutting down gracefully...');
     pool.end();
