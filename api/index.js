@@ -17,28 +17,10 @@ export default function handler(req, res) {
       message: 'Base Monitor API is working!',
       timestamp: new Date().toISOString()
     });
-  } else if (req.url === '/' || req.url === '/index.html') {
-    res.setHeader('Content-Type', 'text/html');
-    res.status(200).send(`
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base Monitor</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .status { color: green; }
-    </style>
-</head>
-<body>
-    <h1>🚀 Base Monitor</h1>
-    <p class="status">✅ API is running successfully!</p>
-    <p>Check <a href="/api/test">/api/test</a> endpoint</p>
-</body>
-</html>
-    `);
   } else {
-    res.status(404).json({ error: 'Not found' });
+    res.status(404).json({
+      error: 'Not Found',
+      message: 'This API endpoint does not exist'
+    });
   }
 }
