@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: base_monitor
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/base_monitor
+      - BASE_RPC=${BASE_RPC:-https://mainnet.base.org}
+      - FARCASTER_API_URL=${FARCASTER_API_URL:-https://api.farcaster.xyz/v2/casts}
+    volumes:
+      - .:/usr/src/app
+
+volumes:
+  db_data:
