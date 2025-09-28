@@ -1,4 +1,4 @@
-# Base Monitor - Professional README
+# Base Monitor
 
 # 🏛️ Base Monitor
 
@@ -230,6 +230,7 @@ SKIP_FARCASTER=true
 ## 📄 License
 
 MIT License
+
 
 
 
