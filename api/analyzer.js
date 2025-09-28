@@ -4,67 +4,41 @@
 import https from 'https';
 import http from 'http';
 
-// Read stored analysis from deployed JSON file
+// Read stored analysis from GitHub raw URL
 async function getStoredAnalysis() {
-  try {
-    // In Vercel, return the real data directly instead of reading from file
-    if (process.env.VERCEL) {
-      console.log('Running in Vercel, returning real analysis data directly');
-      return {
-        dataSource: "database",
-        baseBlockchain: {
-          gini: -0.9994312651887152,
-          top10Share: 0.9999999882691499,
-          uniqueRecipients: 3517,
-          manipulationScore: 5,
-          topRecipients: [
-            { address: "0x088c39ee29fc30df8adc394e9f7dea33e3a26507", amount: "12.916553475186314001", percentage: 33.333 },
-            { address: "0xb6ae8cd3fa404abd4d6db269245e9e52519a54b2", amount: "12.916553475186313969", percentage: 33.333 },
-            { address: "0xe14d6c5fda4197b95e3cd98e0e97b07d597920f2", amount: "12.916553475186313969", percentage: 33.333 }
-          ],
-          totalTransfers: 20410,
-          totalVolume: "38.750081173744897512"
-        },
-        farcaster: {
-          totalCasts: 0,
-          uniqueAuthors: 0,
-          top10Share: 0,
-          manipulationScore: 0,
-          topAuthors: []
-        },
-        baseApp: { 
-          status: "not_implemented",
-          totalTransfers: 0,
-          uniqueRecipients: 0,
-          totalVolume: "0",
-          topRecipients: []
-        },
-        baseBuilder: { 
-          status: "not_implemented",
-          totalTransfers: 0,
-          uniqueRecipients: 0,
-          totalVolume: "0",
-          topRecipients: []
-        },
-        timestamp: "2025-09-28T01:21:33.774Z"
-      };
-    }
+  return new Promise((resolve, reject) => {
+    console.log('🔍 Fetching analysis data from GitHub...');
 
-    // For local development, try to read from file
-    const fs = await import('fs');
-    const path = await import('path');
-    const filePath = path.join(process.cwd(), 'api', 'analysis-data.json');
+    const url = 'https://raw.githubusercontent.com/Adrijan-Petek/base-monitor/main/api/analysis-data.json';
 
-    if (fs.existsSync(filePath)) {
-      const data = fs.readFileSync(filePath, 'utf8');
-      const parsed = JSON.parse(data);
-      console.log('Retrieved analysis data from JSON file');
-      return parsed;
-    }
-  } catch (e) {
-    console.log('JSON file not available or invalid:', e.message);
-  }
-  return null;
+    https.get(url, (res) => {
+      let data = '';
+
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      res.on('end', () => {
+        try {
+          if (res.statusCode === 200) {
+            const parsed = JSON.parse(data);
+            console.log('✅ Retrieved analysis data from GitHub');
+            resolve(parsed);
+          } else {
+            console.log('❌ Failed to fetch from GitHub:', res.statusCode);
+            resolve(null);
+          }
+        } catch (e) {
+          console.log('❌ Error parsing GitHub data:', e.message);
+          resolve(null);
+        }
+      });
+
+    }).on('error', (e) => {
+      console.log('❌ Error fetching from GitHub:', e.message);
+      resolve(null);
+    });
+  });
 }
 
 // Store analysis to JSON file (for local development)
