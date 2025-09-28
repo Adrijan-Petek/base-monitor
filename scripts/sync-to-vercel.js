@@ -77,6 +77,10 @@ async function syncToVercel() {
       await runCommand('git', ['diff', '--cached', '--quiet'], 'Checking for changes');
       console.log('ℹ️  No changes to commit - analysis data is up to date');
     } catch {
+      // Configure git user identity for CI/CD environments
+      await runCommand('git', ['config', 'user.name', 'GitHub Actions'], 'Setting git user name');
+      await runCommand('git', ['config', 'user.email', 'actions@github.com'], 'Setting git user email');
+
       // There are changes, so commit them
       await runCommand('git commit -m "Update analysis data"', [], 'Committing analysis data update');
     }
