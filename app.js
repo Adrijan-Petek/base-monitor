@@ -391,10 +391,20 @@ class RewardMonitorDashboard {
         statusElement.textContent = data.status === 'active' ? 'Active' : 'Monitoring';
         statusElement.className = `status-badge ${data.status === 'active' ? 'active' : 'monitoring'}`;
 
+        // Handle not implemented status
+        if (data.status === 'not_implemented') {
+            document.getElementById('appTransfers').textContent = '0';
+            document.getElementById('appRecipients').textContent = '0';
+            document.getElementById('appVolume').textContent = '0.0000';
+            this.updateBaseAppChart({ totalTransfers: 0, uniqueRecipients: 0, totalVolume: '0' });
+            this.updateBaseAppTopRecipients([]);
+            return;
+        }
+
         // Update metrics
-        document.getElementById('appTransfers').textContent = data.totalTransfers.toLocaleString();
-        document.getElementById('appRecipients').textContent = data.uniqueRecipients.toLocaleString();
-        document.getElementById('appVolume').textContent = parseFloat(data.totalVolume).toFixed(4);
+        document.getElementById('appTransfers').textContent = (data.totalTransfers || 0).toLocaleString();
+        document.getElementById('appRecipients').textContent = (data.uniqueRecipients || 0).toLocaleString();
+        document.getElementById('appVolume').textContent = parseFloat(data.totalVolume || 0).toFixed(4);
 
         // Update chart and recipients
         this.updateBaseAppChart(data);
