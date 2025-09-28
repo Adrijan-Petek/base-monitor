@@ -627,6 +627,38 @@ async function analyze() {
 
 export { analyze, runAnalysis, storeAnalysis, getStoredAnalysis };
 
+// Vercel API route handler
+export default async function handler(req, res) {
+  try {
+    console.log('API request received:', req.method, req.url);
+    
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    
+    if (req.method === 'OPTIONS') {
+      res.status(200).end();
+      return;
+    }
+    
+    if (req.method !== 'GET') {
+      res.status(405).json({ error: 'Method not allowed' });
+      return;
+    }
+    
+    const data = await runAnalysis();
+    res.status(200).json(data);
+  } catch (error) {
+    console.error('API Error:', error);
+    res.status(500).json({ 
+      error: 'Internal server error', 
+      message: error.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+}
+
 if (process.argv[1] && process.argv[1].endsWith('analyze.js')) {
   analyze().catch(e=>{ console.error(e); process.exit(1); });
 }
