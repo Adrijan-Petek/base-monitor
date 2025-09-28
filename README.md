@@ -447,6 +447,46 @@ npm run api
 
 The dashboard will automatically rebuild and redeploy when you push changes to the main branch.
 
+## 🔄 Automated Daily Scanning
+
+Base Monitor includes **automated daily scanning** using GitHub Actions to keep your analysis data fresh without manual intervention.
+
+### ⚙️ Setup GitHub Actions Secrets
+
+In your GitHub repository settings, add these secrets:
+
+| Secret Name | Description | Example |
+|-------------|-------------|---------|
+| `DATABASE_URL` | PostgreSQL connection string | `postgres://user:pass@host:5432/db` |
+| `BASE_RPC` | Base network RPC endpoint | `https://mainnet.base.org` |
+| `REWARD_CONTRACTS` | Comma-separated contract addresses | `0x123...,0x456...` |
+| `FARCASTER_HUB` | Farcaster hub endpoint (optional) | `https://hub.farcaster.xyz` |
+| `FARCASTER_FID` | Farcaster FID for API access (optional) | `12345` |
+
+### ⏰ How It Works
+
+1. **Daily Schedule**: GitHub Actions runs automatically every day at 02:00 UTC
+2. **Data Collection**: Scans Base blockchain for new reward transfers
+3. **Analysis**: Performs manipulation detection and Gini coefficient analysis
+4. **Auto-Deploy**: Commits updated results and triggers Vercel redeployment
+5. **Fresh Data**: Your dashboard always shows the latest analysis
+
+### 🛠️ Manual Trigger
+
+You can also trigger scans manually:
+- Go to GitHub Actions → "Daily Base Reward Scan" → "Run workflow"
+
+### 📊 Workflow Details
+
+The automated workflow:
+- ✅ Runs daily at 02:00 UTC (configurable)
+- ✅ Collects fresh blockchain data
+- ✅ Updates analysis results
+- ✅ Commits changes to trigger Vercel deployment
+- ✅ Provides detailed logs for monitoring
+
+**No server maintenance required** - GitHub handles the scheduling, scanning, and deployment automatically!
+
 ## Farcaster API Setup
 
 For reliable Farcaster data collection, obtain a Neynar API key:
@@ -708,5 +748,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 > This is a developer starter kit. Customize reward contract addresses, RPC providers, and alerting integrations for production use.
-#   T e s t   d e p l o y m e n t  
+#   T e s t   d e p l o y m e n t 
+ 
  

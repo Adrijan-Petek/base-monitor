@@ -1,0 +1,66 @@
+name: Daily Base Reward Scan
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Run daily at 02:00 UTC (adjust timezone as needed)
+  workflow_dispatch:     # Allow manual triggering
+
+jobs:
+  daily-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run daily reward scan
+      run: npm run daily-scan
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        BASE_RPC: ${{ secrets.BASE_RPC }}
+        REWARD_CONTRACTS: ${{ secrets.REWARD_CONTRACTS }}
+        FARCASTER_HUB: ${{ secrets.FARCASTER_HUB }}
+        FARCASTER_FID: ${{ secrets.FARCASTER_FID }}
+
+    - name: Sync analysis results to Vercel
+      run: npm run sync-to-vercel
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        BASE_RPC: ${{ secrets.BASE_RPC }}
+        REWARD_CONTRACTS: ${{ secrets.REWARD_CONTRACTS }}
+
+    - name: Check for changes
+      id: verify-changed-files
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "changes=true" >> $GITHUB_OUTPUT
+        else
+          echo "changes=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Commit and push updated analysis data
+      if: steps.verify-changed-files.outputs.changes == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add api/analysis-data.json
+        git commit -m "🔄 Daily Base reward scan - $(date +'%Y-%m-%d %H:%M UTC')"
+        git push
+
+    - name: Notify Vercel deployment
+      if: steps.verify-changed-files.outputs.changes == 'true'
+      run: |
+        echo "✅ Analysis data updated and pushed to main branch"
+        echo "🚀 Vercel deployment will be triggered automatically"
+        echo "📊 New reward manipulation analysis available"
