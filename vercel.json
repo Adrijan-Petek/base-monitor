@@ -10,5 +10,6 @@
       "path": "/api/analysis",
       "schedule": "0 9 * * *"
     }
-  ]
+  ],
+  "note": "Updated to trigger Vercel redeploy with fresh analysis data"
 }
