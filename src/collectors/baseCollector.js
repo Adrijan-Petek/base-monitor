@@ -182,13 +182,25 @@ export async function collectLatest(numBlocks=CONFIG.NUM_BLOCKS) {
 
       if (CONFIG.REWARD_CONTRACTS && CONFIG.REWARD_CONTRACTS.length > 0) {
         // Filter for specific reward contracts
-        logs = await provider.getLogs({
-          fromBlock: b,
-          toBlock: b,
-          address: CONFIG.REWARD_CONTRACTS,
-          topics: [transferTopic] // ERC20 Transfer events
-        });
-        console.log(`Block ${b}: found ${logs.length} reward transfers.`);
+        try {
+          logs = await provider.getLogs({
+            fromBlock: b,
+            toBlock: b,
+            address: CONFIG.REWARD_CONTRACTS,
+            topics: [transferTopic] // ERC20 Transfer events
+          });
+          console.log(`Block ${b}: found ${logs.length} reward transfers.`);
+        } catch (error) {
+          console.error(`Error collecting block ${b} with reward contracts filter:`, error.message);
+          // Fallback to collecting all logs for this block
+          try {
+            logs = await provider.getLogs({ fromBlock: b, toBlock: b });
+            console.log(`Block ${b}: fallback - stored ${logs.length} logs.`);
+          } catch (fallbackError) {
+            console.error(`Error collecting block ${b} (fallback also failed):`, fallbackError.message);
+            continue; // Skip this block
+          }
+        }
       } else {
         // Fallback: collect all logs (for investigation)
         logs = await provider.getLogs({ fromBlock: b, toBlock: b });
