@@ -119,8 +119,8 @@ graph TB
     J --> C
     K --> C
 
-    style A fill:#1e1e1e,stroke:#333,stroke-width:2px
-    style C fill:#2a2a2a,stroke:#444,stroke-width:2px
+    style A fill:##ff0000,stroke:#333,stroke-width:2px
+    style C fill:##ff0000,stroke:#444,stroke-width:2px
     style D fill:#ff0000,stroke:#222,stroke-width:2px
 ```
 
@@ -230,6 +230,7 @@ SKIP_FARCASTER=true
 ## 📄 License
 
 MIT License
+
 
 
 
