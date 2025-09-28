@@ -171,12 +171,12 @@ class RewardMonitorDashboard {
 
     updateFarcaster(data) {
         // Update metrics from blockchain-detected Farcaster data
-        document.getElementById('farcasterTransfers').textContent = data.farcasterTransfers?.toLocaleString() || '0';
-        document.getElementById('farcasterRecipients').textContent = data.farcasterRecipients?.toLocaleString() || '0';
-        document.getElementById('farcasterVolume').textContent = data.farcasterVolume ? parseFloat(data.farcasterVolume).toFixed(2) : '0.00';
+        document.getElementById('farcasterTransfers').textContent = data.totalCasts?.toLocaleString() || '0';
+        document.getElementById('farcasterRecipients').textContent = data.uniqueAuthors?.toLocaleString() || '0';
+        document.getElementById('farcasterVolume').textContent = data.totalVolume ? parseFloat(data.totalVolume).toFixed(2) : '0.00';
 
         const statusElement = document.getElementById('farcasterStatus');
-        if (data.farcasterTransfers > 0) {
+        if (data.totalCasts > 0) {
             statusElement.textContent = 'Active Detection';
             statusElement.style.background = 'var(--success-color)';
             statusElement.style.color = 'black';
@@ -201,7 +201,7 @@ class RewardMonitorDashboard {
 
         // Create a simple bar chart showing Farcaster transfers vs total transfers
         const totalTransfers = data.totalTransfers || 0;
-        const farcasterTransfers = data.farcasterTransfers || 0;
+        const farcasterTransfers = data.totalCasts || 0;
         const otherTransfers = totalTransfers - farcasterTransfers;
 
         this.charts.farcasterChart = new Chart(ctx, {

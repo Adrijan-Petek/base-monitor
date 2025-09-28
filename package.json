@@ -9,11 +9,14 @@
     "test": "mocha",
     "build": "echo \"Nothing to build. Use npm start instead.\"",
     "daily-scan": "node scripts/daily-scan.js",
+    "sync-to-vercel": "node sync-to-vercel.js",
     "setup-retention": "node scripts/setup-retention.js",
     "cleanup": "node scripts/run-cleanup.js",
     "scan-contracts": "node scripts/scan-contracts.js"
   },
   "dependencies": {
+    "@vercel/kv": "^3.0.0",
+    "@vercel/postgres": "^0.10.0",
     "axios": "^1.6.7",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
