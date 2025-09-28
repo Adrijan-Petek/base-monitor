@@ -1,513 +1,514 @@
 {
+  "dataSource": "database",
   "baseBlockchain": {
-    "gini": 0.9880424225151441,
-    "top10Share": 0.9977193855745172,
-    "uniqueRecipients": 1151,
+    "gini": 0.9995452472936457,
+    "top10Share": 0.9999999999335989,
+    "uniqueRecipients": 2199,
     "manipulationScore": 8,
     "topRecipients": [
       {
+        "address": "0x088c39ee29fc30df8adc394e9f7dea33e3a26507",
+        "amount": "5593.772885019105376466",
+        "percentage": 100
+      },
+      {
         "address": "0xb2cc224c1c9fee385f8ad6a55b4d94e92359dc59",
-        "amount": "0.000049166348383179",
-        "percentage": 36.4359
+        "amount": "0.000120610203840751",
+        "percentage": 0
+      },
+      {
+        "address": "0x4e962bb3889bf030368f56810a9c96b83cb3e778",
+        "amount": "0.000040303652775331",
+        "percentage": 0
       },
       {
         "address": "0xa9d51f7cf1548bc6636bc405ef480fe502cc71a8",
-        "amount": "0.000015133470816161",
-        "percentage": 11.215
+        "amount": "0.000030238207132749",
+        "percentage": 0
       },
       {
         "address": "0x176e3024df8cf318a1436636c15cc2688d72f71d",
-        "amount": "0.000014665278722019",
-        "percentage": 10.8681
+        "amount": "0.000025265823908479",
+        "percentage": 0
       },
       {
         "address": "0x323dc0a60428eb4b9eb788f9ae52ecc98933d6a3",
-        "amount": "0.000010591973169088",
-        "percentage": 7.8494
+        "amount": "0.000022543405937652",
+        "percentage": 0
+      },
+      {
+        "address": "0x590d167e310357c40daf9bf2426e50e10a401bb4",
+        "amount": "0.000021787394187473",
+        "percentage": 0
       },
       {
         "address": "0x621e7c767004266c8109e83143ab0da521b650d6",
-        "amount": "0.000005934611675376",
-        "percentage": 4.398
+        "amount": "0.000017935203628278",
+        "percentage": 0
+      },
+      {
+        "address": "0x222b2bcb5c3ba4a932900a0ce7fe5ee400bd2985",
+        "amount": "0.00001516592448912",
+        "percentage": 0
+      },
+      {
+        "address": "0x25ce4b4dcb620b73a78f91cd66f6e3e5ef8f487c",
+        "amount": "0.000009784709000159",
+        "percentage": 0
+      },
+      {
+        "address": "0xd1910ad542986304116a85479d37cd541dfe6e11",
+        "amount": "0.000008677850635344",
+        "percentage": 0
+      },
+      {
+        "address": "0x751140b83d289353b3b6da2c7e8659b3a0642f11",
+        "amount": "0.000008120385745401",
+        "percentage": 0
+      },
+      {
+        "address": "0x9411423bf0705a1edcbaa78845f2c22950225cf9",
+        "amount": "0.000005410680377777",
+        "percentage": 0
+      },
+      {
+        "address": "0x71d8acc2d14625f4d0d5202e1f6389b2be122af4",
+        "amount": "0.000004700972400965",
+        "percentage": 0
+      },
+      {
+        "address": "0x33d6e0176c13aac3042d8032494e11a636026d8c",
+        "amount": "0.000004517942557788",
+        "percentage": 0
       },
       {
         "address": "0xefa792a75ab15782f50843593e754a16e647b206",
         "amount": "0.000004078307886481",
-        "percentage": 3.0223
-      },
-      {
-        "address": "0xd1910ad542986304116a85479d37cd541dfe6e11",
-        "amount": "0.000003909026957322",
-        "percentage": 2.8969
+        "percentage": 0
       },
       {
         "address": "0x86a52d8551db74623832bf729fb89ceedb8ddc06",
         "amount": "0.000003270547275871",
-        "percentage": 2.4237
+        "percentage": 0
       },
       {
-        "address": "0x25ce4b4dcb620b73a78f91cd66f6e3e5ef8f487c",
-        "amount": "0.00000294220050594",
-        "percentage": 2.1804
+        "address": "0xcf7603eb05d36b54935fecb6c5f79e6d1198f1c3",
+        "amount": "0.000002919784263643",
+        "percentage": 0
       },
       {
-        "address": "0x4e962bb3889bf030368f56810a9c96b83cb3e778",
-        "amount": "0.000002266726446403",
-        "percentage": 1.6798
+        "address": "0x48b5739d031cc3b04d9a369197d6cc34b5f94b37",
+        "amount": "0.000002559797802525",
+        "percentage": 0
+      },
+      {
+        "address": "0x4b4349914bb0df12bf2b2dc2409eb9308eb84ad3",
+        "amount": "0.000002397614652474",
+        "percentage": 0
+      },
+      {
+        "address": "0xd0111a2478d286860b21861abd8212cfe90a3f8e",
+        "amount": "0.000002367392687747",
+        "percentage": 0
+      },
+      {
+        "address": "0x208b443983d8bcc8578e9d86db23fba547071270",
+        "amount": "0.000001884220525937",
+        "percentage": 0
+      },
+      {
+        "address": "0xc26ae9339be07ce072b96003fa959517c4af37e9",
+        "amount": "0.000001780704369854",
+        "percentage": 0
       },
       {
         "address": "0x46a1153f4ed25a58389cab74bebf9057351a5a83",
-        "amount": "0.000001668527066097",
-        "percentage": 1.2365
+        "amount": "0.000001767046422516",
+        "percentage": 0
       },
       {
-        "address": "0x9411423bf0705a1edcbaa78845f2c22950225cf9",
-        "amount": "0.00000104995416329",
-        "percentage": 0.7781
+        "address": "0x13f39607107b3c9de1366be93180fb6af007e2ca",
+        "amount": "0.000001563067218195",
+        "percentage": 0
       },
       {
-        "address": "0xbe00ff35af70e8415d0eb605a286d8a45466a4c1",
-        "amount": "0.000001036377548187",
-        "percentage": 0.768
+        "address": "0xc13eb2b78b334e626c2dd001c388fd1b5ee1700e",
+        "amount": "0.000001447033748057",
+        "percentage": 0
+      },
+      {
+        "address": "0xc4ed25e61cbde561c982789f740e3e9a8c317100",
+        "amount": "0.00000141829990167",
+        "percentage": 0
+      },
+      {
+        "address": "0x04d72fb4803b4e02f14971e5bd092375eb330749",
+        "amount": "0.000001210697074566",
+        "percentage": 0
+      },
+      {
+        "address": "0x59193d6ba7543edb1b14fcdd7de2e9f6644eb022",
+        "amount": "0.000001136818114721",
+        "percentage": 0
       },
       {
         "address": "0xd0b53d9277642d899df5c87a3966a349a798f224",
-        "amount": "0.000001032316136175",
-        "percentage": 0.765
+        "amount": "0.000001130746491465",
+        "percentage": 0
+      },
+      {
+        "address": "0xb75343dd8b8a51fbd1283f279b1add1968a3ad3b",
+        "amount": "0.000001102474619972",
+        "percentage": 0
+      },
+      {
+        "address": "0xbe00ff35af70e8415d0eb605a286d8a45466a4c1",
+        "amount": "0.000001097156422477",
+        "percentage": 0
+      },
+      {
+        "address": "0x2917956eff0b5eaf030abdb4ef4296df775009ca",
+        "amount": "0.000000995113814226",
+        "percentage": 0
+      },
+      {
+        "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+        "amount": "0.000000956711912226",
+        "percentage": 0
       },
       {
         "address": "0x03a520b32256eba39998e246cdf6f2b50e4eacbc",
         "amount": "0.000000956030245924",
-        "percentage": 0.7085
+        "percentage": 0
       },
       {
         "address": "0xedc817a28e8b93b03976fbd4a3ddbc9f7d176c22",
-        "amount": "0.000000910711553678",
-        "percentage": 0.6749
+        "amount": "0.000000954297636191",
+        "percentage": 0
       },
       {
         "address": "0x416ec2ca21a38cbcfeacd6a14532b3f348356d23",
-        "amount": "0.000000908063051765",
-        "percentage": 0.6729
+        "amount": "0.000000946079735718",
+        "percentage": 0
       },
       {
-        "address": "0x222b2bcb5c3ba4a932900a0ce7fe5ee400bd2985",
-        "amount": "0.000000821822969969",
-        "percentage": 0.609
-      },
-      {
-        "address": "0x9d29c42f80026be8a76508606c7e2f2508ea8285",
-        "amount": "0.000000804238101629",
-        "percentage": 0.596
-      },
-      {
-        "address": "0xd0111a2478d286860b21861abd8212cfe90a3f8e",
-        "amount": "0.00000079984775246",
-        "percentage": 0.5927
-      },
-      {
-        "address": "0xc4ed25e61cbde561c982789f740e3e9a8c317100",
-        "amount": "0.000000746915658006",
-        "percentage": 0.5535
-      },
-      {
-        "address": "0xc26ae9339be07ce072b96003fa959517c4af37e9",
-        "amount": "0.000000705611428115",
-        "percentage": 0.5229
-      },
-      {
-        "address": "0x4e65fe4dba92790696d040ac24aa414708f5c0ab",
-        "amount": "0.000000692089693924",
-        "percentage": 0.5129
+        "address": "0x7bfa7c4f149e7415b73bdedfe609237e29cbf34a",
+        "amount": "0.000000907918052099",
+        "percentage": 0
       },
       {
         "address": "0xc6429d99198c067e04f0c1a2e0109b2bf5ddcea8",
-        "amount": "0.000000613388066923",
-        "percentage": 0.4546
+        "amount": "0.00000088042183753",
+        "percentage": 0
+      },
+      {
+        "address": "0x9d29c42f80026be8a76508606c7e2f2508ea8285",
+        "amount": "0.000000868038528564",
+        "percentage": 0
+      },
+      {
+        "address": "0x4e65fe4dba92790696d040ac24aa414708f5c0ab",
+        "amount": "0.000000712220464696",
+        "percentage": 0
+      },
+      {
+        "address": "0xb7639f5b2f9ac7fc47a34f8f3bbcbe94f5c55458",
+        "amount": "0.000000703611217681",
+        "percentage": 0
+      },
+      {
+        "address": "0x485459469ccb8b9ee089a2d720421046642b2547",
+        "amount": "0.000000653565983201",
+        "percentage": 0
+      },
+      {
+        "address": "0x9dcbb8258e0015d6cb81061b3f5c47d5c5d6188f",
+        "amount": "0.00000062951430047",
+        "percentage": 0
+      },
+      {
+        "address": "0xec6c44e704eb1932ec5fe1e4aba58db6fee71460",
+        "amount": "0.000000629251176847",
+        "percentage": 0
+      },
+      {
+        "address": "0xb402cc22170548f003489507ffbd111fbec3cc41",
+        "amount": "0.000000623091781993",
+        "percentage": 0
+      },
+      {
+        "address": "0xd1895f2019c2152fc2b9022d57f19198c4cfcabc",
+        "amount": "0.000000620313188734",
+        "percentage": 0
       },
       {
         "address": "0x3683a176b50574e89f1c2d25bd2d9af0ec4111d3",
         "amount": "0.000000588597725893",
-        "percentage": 0.4362
-      },
-      {
-        "address": "0xd1895f2019c2152fc2b9022d57f19198c4cfcabc",
-        "amount": "0.000000588597725893",
-        "percentage": 0.4362
+        "percentage": 0
       },
       {
         "address": "0x406073860818ecfb7dca0706a6bac73faa95bd3e",
-        "amount": "0.000000536597305665",
-        "percentage": 0.3977
+        "amount": "0.000000587178129601",
+        "percentage": 0
       },
       {
-        "address": "0x9dcbb8258e0015d6cb81061b3f5c47d5c5d6188f",
-        "amount": "0.000000525827699872",
-        "percentage": 0.3897
+        "address": "0x3f53f1fd5b7723ddf38d93a584d280b9b94c3111",
+        "amount": "0.000000503803598266",
+        "percentage": 0
       },
       {
-        "address": "0xb402cc22170548f003489507ffbd111fbec3cc41",
-        "amount": "0.000000519172488246",
-        "percentage": 0.3847
+        "address": "0x827922686190790b37229fd06084350e74485b72",
+        "amount": "0.000000499274908972",
+        "percentage": 0
       },
       {
-        "address": "0xc13eb2b78b334e626c2dd001c388fd1b5ee1700e",
-        "amount": "0.000000486316612048",
-        "percentage": 0.3604
+        "address": "0x335e7b637bf2ed5288f56fd0bc7e90647575c4f6",
+        "amount": "0.000000496536707286",
+        "percentage": 0
       },
       {
-        "address": "0x208b443983d8bcc8578e9d86db23fba547071270",
-        "amount": "0.000000461796786663",
-        "percentage": 0.3422
-      },
-      {
-        "address": "0xb7639f5b2f9ac7fc47a34f8f3bbcbe94f5c55458",
-        "amount": "0.000000454332730906",
-        "percentage": 0.3367
+        "address": "0x67d12a43b726c58412eb9cd1eaf3f4ac16381dec",
+        "amount": "0.000000448535192926",
+        "percentage": 0
       },
       {
         "address": "0x3cf6c73a7b69da8b6fca66bed5d72a109f220c75",
-        "amount": "0.000000353499300866",
-        "percentage": 0.262
+        "amount": "0.000000412323639702",
+        "percentage": 0
       },
       {
-        "address": "0x04d72fb4803b4e02f14971e5bd092375eb330749",
-        "amount": "0.000000340195469411",
-        "percentage": 0.2521
+        "address": "0x72ab388e2e2f6facef59e3c3fa2c4e29011c2d38",
+        "amount": "0.000000380781704377",
+        "percentage": 0
       },
       {
-        "address": "0x2917956eff0b5eaf030abdb4ef4296df775009ca",
-        "amount": "0.000000329763318902",
-        "percentage": 0.2444
+        "address": "0x01989c93890aed05a63d179b03424997075b6acf",
+        "amount": "0.000000365820895448",
+        "percentage": 0
       },
       {
-        "address": "0x59193d6ba7543edb1b14fcdd7de2e9f6644eb022",
-        "amount": "0.000000311294504326",
-        "percentage": 0.2307
+        "address": "0xdbc6998296caa1652a810dc8d3baf4a8294330f1",
+        "amount": "0.000000354523677202",
+        "percentage": 0
+      },
+      {
+        "address": "0x325f9b7ee7e6e3fc428f79f108bffff099c5d799",
+        "amount": "0.000000283208578878",
+        "percentage": 0
+      },
+      {
+        "address": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+        "amount": "0.000000272512252665",
+        "percentage": 0
       },
       {
         "address": "0x6cdcb1c4a4d1c3c6d054b27ac5b77e89eafb971d",
-        "amount": "0.000000262895147347",
-        "percentage": 0.1948
+        "amount": "0.000000262895519903",
+        "percentage": 0
       },
       {
         "address": "0xdaf0a4ce1fce8b85c0982ae2accb2344f5a1358c",
         "amount": "0.000000242632466704",
-        "percentage": 0.1798
+        "percentage": 0
       },
       {
-        "address": "0x67d12a43b726c58412eb9cd1eaf3f4ac16381dec",
-        "amount": "0.000000231034671673",
-        "percentage": 0.1712
+        "address": "0xa1bd6d0dbea4f93105152ae961f262e30a5b5076",
+        "amount": "0.000000237902382904",
+        "percentage": 0
       },
       {
-        "address": "0x33d6e0176c13aac3042d8032494e11a636026d8c",
-        "amount": "0.000000217576051538",
-        "percentage": 0.1612
+        "address": "0xa1f15248ee6f2363a290ae32410fe63800bb7b07",
+        "amount": "0.000000226258997436",
+        "percentage": 0
       },
       {
         "address": "0xad4f8f6098232b250f2be2efd02248731246915d",
-        "amount": "0.000000188540139981",
-        "percentage": 0.1397
+        "amount": "0.000000190364686596",
+        "percentage": 0
       },
       {
-        "address": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
-        "amount": "0.000000179012832778",
-        "percentage": 0.1327
+        "address": "0x1985ea6e9c68e1c272d8209f3b478ac2fdb25c87",
+        "amount": "0.00000018043356022",
+        "percentage": 0
       },
       {
-        "address": "0x72ab388e2e2f6facef59e3c3fa2c4e29011c2d38",
-        "amount": "0.000000165971747571",
-        "percentage": 0.123
+        "address": "0xb94b22332abf5f89877a14cc88f2abc48c34b3df",
+        "amount": "0.00000017357777403",
+        "percentage": 0
       },
       {
         "address": "0x55fa73992590118e32f03c422a3ed1f020db1bb4",
         "amount": "0.000000155900763098",
-        "percentage": 0.1155
+        "percentage": 0
       },
       {
-        "address": "0x71d8acc2d14625f4d0d5202e1f6389b2be122af4",
-        "amount": "0.000000152259464224",
-        "percentage": 0.1128
-      },
-      {
-        "address": "0xdbc6998296caa1652a810dc8d3baf4a8294330f1",
-        "amount": "0.000000149139850284",
-        "percentage": 0.1105
-      },
-      {
-        "address": "0x827922686190790b37229fd06084350e74485b72",
-        "amount": "0.000000129106400296",
-        "percentage": 0.0957
-      },
-      {
-        "address": "0x335e7b637bf2ed5288f56fd0bc7e90647575c4f6",
-        "amount": "0.00000012636819861",
-        "percentage": 0.0936
-      },
-      {
-        "address": "0x485459469ccb8b9ee089a2d720421046642b2547",
-        "amount": "0.000000114647125529",
-        "percentage": 0.085
-      },
-      {
-        "address": "0xec6c44e704eb1932ec5fe1e4aba58db6fee71460",
-        "amount": "0.000000109088842863",
-        "percentage": 0.0808
-      },
-      {
-        "address": "0xa1bd6d0dbea4f93105152ae961f262e30a5b5076",
-        "amount": "0.000000103658673638",
-        "percentage": 0.0768
-      },
-      {
-        "address": "0xbe2b5d6954e133a127ae37e871622b2bae533be1",
-        "amount": "0.000000100885818703",
-        "percentage": 0.0748
+        "address": "0x9f082689980ce0d6202a245a5758d593b1f94afe",
+        "amount": "0.000000147046868333",
+        "percentage": 0
       },
       {
         "address": "0x7b87facb217032fcaf020f5a475a714cec6664b1",
-        "amount": "0.000000100030960654",
-        "percentage": 0.0741
+        "amount": "0.000000138989256769",
+        "percentage": 0
       },
       {
-        "address": "0x3a32d2987b86a9c5552921289b8d4470075d360f",
-        "amount": "0.000000092091561527",
-        "percentage": 0.0682
+        "address": "0xbe2b5d6954e133a127ae37e871622b2bae533be1",
+        "amount": "0.000000131556481804",
+        "percentage": 0
       },
       {
         "address": "0xbf44de8fc9eeeed8615b0b3bc095cb0ddef35e09",
-        "amount": "0.000000083488393793",
-        "percentage": 0.0619
+        "amount": "0.000000118335990783",
+        "percentage": 0
       },
       {
-        "address": "0xa1f15248ee6f2363a290ae32410fe63800bb7b07",
-        "amount": "0.000000081654874548",
-        "percentage": 0.0605
+        "address": "0x3a32d2987b86a9c5552921289b8d4470075d360f",
+        "amount": "0.00000011308780176",
+        "percentage": 0
+      },
+      {
+        "address": "0xc67448f2ebfb83570ea4dc26b2d15c87aea6500c",
+        "amount": "0.000000102358334754",
+        "percentage": 0
+      },
+      {
+        "address": "0x47146d81b68b737316d0636d5135849d364bb0c8",
+        "amount": "0.00000008740659721",
+        "percentage": 0
+      },
+      {
+        "address": "0xc758d5718147c8c5bc440098d623cf8d96b95b83",
+        "amount": "0.000000082530767818",
+        "percentage": 0
       },
       {
         "address": "0xf774c83692d563b94599ab368e5b971f05f0a171",
         "amount": "0.00000008",
-        "percentage": 0.0593
+        "percentage": 0
       },
       {
-        "address": "0xb75343dd8b8a51fbd1283f279b1add1968a3ad3b",
-        "amount": "0.000000078796882021",
-        "percentage": 0.0584
+        "address": "0x3f96d6f1e1f4c76bbfe74b7c1d647a4add40bf21",
+        "amount": "0.00000007753261541",
+        "percentage": 0
+      },
+      {
+        "address": "0xe30d5bf485f7476ac15884a28ffb3c9cea635dcb",
+        "amount": "0.000000076018432614",
+        "percentage": 0
+      },
+      {
+        "address": "0xbad47d9af4283e4423cd6b8ad0f1be079ddb2f56",
+        "amount": "0.000000074181260322",
+        "percentage": 0
       },
       {
         "address": "0x427033f000fbed054fe80a3b2bfe70c740934ba9",
-        "amount": "0.000000071109428695",
-        "percentage": 0.0527
+        "amount": "0.000000074169345477",
+        "percentage": 0
       },
       {
-        "address": "0x01989c93890aed05a63d179b03424997075b6acf",
-        "amount": "0.000000068355646884",
-        "percentage": 0.0507
+        "address": "0xadbdf4a7e61d97cfdf5967d51c3b84ba6a2d6cfe",
+        "amount": "0.000000068",
+        "percentage": 0
       },
       {
-        "address": "0x47146d81b68b737316d0636d5135849d364bb0c8",
-        "amount": "0.000000061834738244",
-        "percentage": 0.0458
+        "address": "0x4f9db9b2ad86ec72b9b8bda7b5ea187b05b98da2",
+        "amount": "0.000000068",
+        "percentage": 0
+      },
+      {
+        "address": "0xb775272e537cc670c65dc852908ad47015244eaf",
+        "amount": "0.000000067233344135",
+        "percentage": 0
       },
       {
         "address": "0xb7f5bf799fb265657c628ef4a13f90f83a3a616a",
-        "amount": "0.000000061354787526",
-        "percentage": 0.0455
+        "amount": "0.000000066041569983",
+        "percentage": 0
       },
       {
         "address": "0xe5b5f522e98b5a2baae212d4da66b865b781db97",
-        "amount": "0.00000005660897505",
-        "percentage": 0.042
+        "amount": "0.000000059897029632",
+        "percentage": 0
+      },
+      {
+        "address": "0x3e66e55e97ce60096f74b7c475e8249f2d31a9fb",
+        "amount": "0.000000056241862596",
+        "percentage": 0
       },
       {
         "address": "0xcad97616f91872c02ba3553db315db4015cbe850",
         "amount": "0.000000055940369673",
-        "percentage": 0.0415
+        "percentage": 0
       },
       {
         "address": "0x07ae8551be970cb1cca11dd7a11f47ae82e70e67",
         "amount": "0.00000005301112357",
-        "percentage": 0.0393
+        "percentage": 0
       },
       {
-        "address": "0xb94b22332abf5f89877a14cc88f2abc48c34b3df",
-        "amount": "0.000000052055189267",
-        "percentage": 0.0386
+        "address": "0x6ea77f83ec8693666866ece250411c974ab962a8",
+        "amount": "0.000000052384192021",
+        "percentage": 0
+      },
+      {
+        "address": "0x802b65b5d9016621e66003aed0b16615093f328b",
+        "amount": "0.000000052147964917",
+        "percentage": 0
       },
       {
         "address": "0xbcfb11d9827cfdd160ef17f24d960a8f19ac7a8e",
         "amount": "0.000000051746460363",
-        "percentage": 0.0383
+        "percentage": 0
       },
       {
         "address": "0x8cef1581daadcbf9c6c7c198de8047dc4498e682",
         "amount": "0.00000005",
-        "percentage": 0.0371
+        "percentage": 0
       },
       {
-        "address": "0xe30d5bf485f7476ac15884a28ffb3c9cea635dcb",
-        "amount": "0.000000049014429023",
-        "percentage": 0.0363
+        "address": "0x9b5b9ffd542c5955283ff13b5436c2153d8d072a",
+        "amount": "0.000000048920239195",
+        "percentage": 0
       },
       {
-        "address": "0x6ea77f83ec8693666866ece250411c974ab962a8",
-        "amount": "0.000000046656463986",
-        "percentage": 0.0346
-      },
-      {
-        "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
-        "amount": "0.000000040679691954",
-        "percentage": 0.0301
-      },
-      {
-        "address": "0x802b65b5d9016621e66003aed0b16615093f328b",
-        "amount": "0.000000035736518893",
-        "percentage": 0.0265
-      },
-      {
-        "address": "0xbeef010f9cb27031ad51e3333f9af9c6b1228183",
-        "amount": "0.00000002813804",
-        "percentage": 0.0209
-      },
-      {
-        "address": "0xc667a5954ec53607cf4cd1274ee2eaecbe7cedaf",
-        "amount": "0.000000025385218357",
-        "percentage": 0.0188
-      },
-      {
-        "address": "0x9008d19f58aabd9ed0d60971565aa8510560ab41",
-        "amount": "0.000000024602833124",
-        "percentage": 0.0182
-      },
-      {
-        "address": "0x29424d7295cf0313e64b16521dce75a4532505f5",
-        "amount": "0.0000000225",
-        "percentage": 0.0167
-      },
-      {
-        "address": "0x09b043840cd2f32687ec6b63fb0412585de39822",
-        "amount": "0.000000022312598948",
-        "percentage": 0.0165
-      },
-      {
-        "address": "0x6dcbce46a8b494c885d0e7b6817d2b519df64467",
-        "amount": "0.00000001857873046",
-        "percentage": 0.0138
-      },
-      {
-        "address": "0xfbb6eed8e7aa03b138556eedaf5d271a5e1e43ef",
-        "amount": "0.000000016947417838",
-        "percentage": 0.0126
-      },
-      {
-        "address": "0xf5042e6ffac5a625d4e7848e0b01373d8eb9e222",
-        "amount": "0.000000016119486804",
-        "percentage": 0.0119
-      },
-      {
-        "address": "0x68fcfa598ba48a8e4a67d64e743abdbcf813ad9e",
-        "amount": "0.0000000150018",
-        "percentage": 0.0111
-      },
-      {
-        "address": "0xc01039776d6e207d1038f686b99eadc46e16f629",
-        "amount": "0.000000015",
-        "percentage": 0.0111
-      },
-      {
-        "address": "0x6ad5d94fa226485a715477f1bcd64f862aea8bb4",
-        "amount": "0.000000015",
-        "percentage": 0.0111
-      },
-      {
-        "address": "0x4d5541c658ced050b3a6504a7bd20630b376bfd2",
-        "amount": "0.000000014886849832",
-        "percentage": 0.011
-      },
-      {
-        "address": "0x57ef2b98306d2c98f2fcebbdd05090c75982af72",
-        "amount": "0.000000014490502133",
-        "percentage": 0.0107
-      },
-      {
-        "address": "0x92293f435109bf5280fd51872b9952d838b41c23",
-        "amount": "0.000000013624222034",
-        "percentage": 0.0101
-      },
-      {
-        "address": "0xc1256ae5ff1cf2719d4937adb3bbccab2e00a2ca",
-        "amount": "0.000000013452571913",
-        "percentage": 0.01
-      },
-      {
-        "address": "0xb775272e537cc670c65dc852908ad47015244eaf",
-        "amount": "0.000000013256390403",
-        "percentage": 0.0098
-      },
-      {
-        "address": "0x3f53f1fd5b7723ddf38d93a584d280b9b94c3111",
-        "amount": "0.000000013230016021",
-        "percentage": 0.0098
-      },
-      {
-        "address": "0x0ba30bdd7d3c510de16c47385102c0b7068f4f33",
-        "amount": "0.00000001264598",
-        "percentage": 0.0094
+        "address": "0xefc77d0071a390437ead599ef430b5e2a57ce45c",
+        "amount": "0.000000045498423124",
+        "percentage": 0
       },
       {
         "address": "0x6e4141d33021b52c91c28608403db4a0ffb50ec6",
-        "amount": "0.00000001262136762",
-        "percentage": 0.0094
+        "amount": "0.000000041112596858",
+        "percentage": 0
       },
       {
-        "address": "0x0000000000000000000000000000000000000000",
-        "amount": "0.000000012165630869",
-        "percentage": 0.009
-      },
-      {
-        "address": "0x0f0067cd819cb8f20bda62046daff7a2b5c88280",
-        "amount": "0.000000012120953645",
-        "percentage": 0.009
-      },
-      {
-        "address": "0xfd78ee919681417d192449715b2594ab58f5d002",
-        "amount": "0.000000011815630869",
-        "percentage": 0.0088
-      },
-      {
-        "address": "0x02054e00da96385e66c3814d8c3b474cc951afbd",
-        "amount": "0.000000011156291682",
-        "percentage": 0.0083
-      },
-      {
-        "address": "0xac6e5d4f1dcd0f0b06a051de95803a6b65899d1b",
-        "amount": "0.000000010842383817",
-        "percentage": 0.008
-      },
-      {
-        "address": "0x0ccfa1c3441f3febdcee067bd1cbe3af7bbb614b",
-        "amount": "0.000000010817866535",
-        "percentage": 0.008
+        "address": "0x4c2c0f0bb2631b02ac9299c59690914ee7a200b8",
+        "amount": "0.000000038527490377",
+        "percentage": 0
       },
       {
         "address": "0xba1333333333a1ba1108e8412f11850a5c319ba9",
-        "amount": "0.000000010781361835",
-        "percentage": 0.008
+        "amount": "0.000000037834618289",
+        "percentage": 0
       },
       {
-        "address": "0xb4cb800910b228ed3d0834cf79d697127bbb00e5",
-        "amount": "0.000000010492149954",
-        "percentage": 0.0078
+        "address": "0x9008d19f58aabd9ed0d60971565aa8510560ab41",
+        "amount": "0.000000037696054908",
+        "percentage": 0
       },
       {
-        "address": "0x4cd00e387622c35bddb9b4c962c136462338bc31",
-        "amount": "0.000000010000240655",
-        "percentage": 0.0074
+        "address": "0xfbb6eed8e7aa03b138556eedaf5d271a5e1e43ef",
+        "amount": "0.000000037689778185",
+        "percentage": 0
+      },
+      {
+        "address": "0xf5042e6ffac5a625d4e7848e0b01373d8eb9e222",
+        "amount": "0.000000034905767114",
+        "percentage": 0
       }
     ],
-    "totalTransfers": 5361,
-    "totalVolume": "0.000134939197295417",
+    "totalTransfers": 12560,
+    "totalVolume": "5593.773276038252678348",
     "manipulationReasons": [
       "Extreme Gini coefficient (>0.95)",
       "Top 1% controls >50% of rewards",
@@ -527,6 +528,5 @@
   "baseBuilder": {
     "status": "not_implemented"
   },
-  "timestamp": "2025-09-28T22:04:36.580Z",
-  "dataSource": "database"
+  "timestamp": "2025-09-28T22:29:24.570Z"
 }
