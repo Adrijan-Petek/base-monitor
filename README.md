@@ -1,424 +1,844 @@
-# 🔍 Base Monitor# 🔍 Base Monitor
+# 🔍 Base Monitor# 🔍 Base Monitor# 🔍 Base Monitor
 
 
 
-<div align="center"><div align="center">
+<div align="center">
 
 
 
-![Base Monitor Logo](public/favicon.svg)![Base Monitor Logo](public/favicon.svg)
+![Base Monitor Logo](public/favicon.svg)<div align="center"><div align="center">
 
 
+
+**Reward & Farcaster Correlation Scanner**
+
+
+
+[![CI](https://github.com/Adrijan-Petek/base-monitor/actions/workflows/main.yml/badge.svg)](https://github.com/Adrijan-Petek/base-monitor/actions/workflows/main.yml)![Base Monitor Logo](public/favicon.svg)![Base Monitor Logo](public/favicon.svg)
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com/)
 
 **Reward & Farcaster Correlation Scanner****Reward & Farcaster Correlation Scanner**
 
+*Monitor Base blockchain rewards and Farcaster activity for manipulation detection*
 
+
+
+[🚀 Quick Start](#-quick-start) • [📊 Live Dashboard](#-live-dashboard) • [📖 Documentation](#-documentation) • [🤝 Contributing](#-contributing)
 
 [![CI](https://github.com/Adrijan-Petek/base-monitor/actions/workflows/main.yml/badge.svg)](https://github.com/Adrijan-Petek/base-monitor/actions/workflows/main.yml)[![CI](https://github.com/Adrijan-Petek/base-monitor/actions/workflows/main.yml/badge.svg)](https://github.com/Adrijan-Petek/base-monitor/actions/workflows/main.yml)
 
+</div>
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+---
 
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
 
+## ✨ What is Base Monitor?
+
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com/)[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com/)
 
+Base Monitor is a comprehensive **blockchain monitoring system** that scans Base ecosystem on-chain logs and Farcaster off-chain activity to detect anomalous reward distributions and correlations. Built for developers who need to monitor decentralized reward systems and social activity patterns.
 
+
+
+### 🎯 Key Capabilities
 
 *Monitor Base blockchain rewards and Farcaster activity for manipulation detection**Monitor Base blockchain rewards and Farcaster activity for manipulation detection*
 
+- **🔍 Real-time Monitoring**: 24/7 surveillance of reward contracts
 
+- **📊 Advanced Analytics**: Gini coefficient analysis and anomaly detection
 
-[🚀 Quick Start](#-quick-start) • [📊 Live Dashboard](#-live-dashboard) • [📖 Documentation](#-documentation) • [🤝 Contributing](#-contributing)[🚀 Quick Start](#-quick-start) • [📊 Live Dashboard](#-live-dashboard) • [📖 Documentation](#-documentation) • [🤝 Contributing](#-contributing)
+- **🚨 Smart Alerts**: Automated detection of suspicious distributions
 
+- **🤖 Auto Discovery**: Automatically finds new reward contracts[🚀 Quick Start](#-quick-start) • [📊 Live Dashboard](#-live-dashboard) • [📖 Documentation](#-documentation) • [🤝 Contributing](#-contributing)[🚀 Quick Start](#-quick-start) • [📊 Live Dashboard](#-live-dashboard) • [📖 Documentation](#-documentation) • [🤝 Contributing](#-contributing)
 
+- **📱 Web Dashboard**: Beautiful real-time visualization interface
 
-</div></div>
-
-
-
-------
-
-
-
-## ✨ What is Base Monitor?## ✨ What is Base Monitor?
+- **🐳 Docker Ready**: One-command deployment
 
 
 
-Base Monitor is a comprehensive **blockchain monitoring system** that scans Base ecosystem on-chain logs and Farcaster off-chain activity to detect anomalous reward distributions and correlations. Built for developers who need to monitor decentralized reward systems and social activity patterns.Base Monitor is a comprehensive **blockchain monitoring system** that scans Base ecosystem on-chain logs and Farcaster off-chain activity to detect anomalous reward distributions and correlations. Built for developers who need to monitor decentralized reward systems and social activity patterns.
+---</div></div>
 
 
 
-### 🎯 Key Capabilities### 🎯 Key Capabilities
+## 🏗️ System Architecture
 
 
 
-- **🔍 Real-time Monitoring**: 24/7 surveillance of reward contracts- **🔍 Real-time Monitoring**: 24/7 surveillance of reward contracts
+```------
+
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+
+│   Collectors    │    │    Analyzer     │    │    Storage      │
+
+│                 │    │                 │    │                 │
+
+│ • Base RPC      │───▶│ • Gini Analysis │───▶│ • PostgreSQL    │## ✨ What is Base Monitor?## ✨ What is Base Monitor?
+
+│ • Farcaster API │    │ • Anomaly       │    │ • Time-series   │
+
+│ • Contract Scan │    │   Detection     │    │ • Indexed       │
+
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+
+         │                       │                       │Base Monitor is a comprehensive **blockchain monitoring system** that scans Base ecosystem on-chain logs and Farcaster off-chain activity to detect anomalous reward distributions and correlations. Built for developers who need to monitor decentralized reward systems and social activity patterns.Base Monitor is a comprehensive **blockchain monitoring system** that scans Base ecosystem on-chain logs and Farcaster off-chain activity to detect anomalous reward distributions and correlations. Built for developers who need to monitor decentralized reward systems and social activity patterns.
+
+         ▼                       ▼                       ▼
+
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+
+│   Web Dashboard │    │   Alert System  │    │   API Endpoints │
+
+│                 │    │                 │    │                 │### 🎯 Key Capabilities### 🎯 Key Capabilities
+
+│ • Real-time     │◀───│ • Email/Slack   │    │ • REST API      │
+
+│ • Charts        │    │ • Thresholds    │    │ • WebSocket     │
+
+│ • Mobile Ready  │    │ • Auto-scaling  │    │ • CORS Enabled  │
+
+└─────────────────┘    └─────────────────┘    └─────────────────┘- **🔍 Real-time Monitoring**: 24/7 surveillance of reward contracts- **🔍 Real-time Monitoring**: 24/7 surveillance of reward contracts
+
+```
 
 - **📊 Advanced Analytics**: Gini coefficient analysis and anomaly detection- **📊 Advanced Analytics**: Gini coefficient analysis and anomaly detection
 
+### 🧩 Components
+
 - **🚨 Smart Alerts**: Automated detection of suspicious distributions- **🚨 Smart Alerts**: Automated detection of suspicious distributions
 
-- **🤖 Auto Discovery**: Automatically finds new reward contracts- **🤖 Auto Discovery**: Automatically finds new reward contracts
+| Component | Purpose | Technology |
 
-- **📱 Web Dashboard**: Beautiful real-time visualization interface- **📱 Web Dashboard**: Beautiful real-time visualization interface
+|-----------|---------|------------|- **🤖 Auto Discovery**: Automatically finds new reward contracts- **🤖 Auto Discovery**: Automatically finds new reward contracts
 
-- **🐳 Docker Ready**: One-command deployment- **🐳 Docker Ready**: One-command deployment
+| **Collectors** | Data ingestion from blockchain & social APIs | ethers.js, axios |
+
+| **Analyzer** | Statistical analysis & anomaly detection | Custom algorithms |- **📱 Web Dashboard**: Beautiful real-time visualization interface- **📱 Web Dashboard**: Beautiful real-time visualization interface
+
+| **Storage** | Time-series data persistence | PostgreSQL |
+
+| **Dashboard** | Real-time visualization | HTML5, CSS3, JavaScript |- **🐳 Docker Ready**: One-command deployment- **🐳 Docker Ready**: One-command deployment
+
+| **API** | REST endpoints for data access | Express.js |
 
 
+
+---
 
 ------
 
+## 🚀 Quick Start
 
+
+
+Get Base Monitor running in **5 minutes**! Here's the complete setup process:
 
 ## 🏗️ System Architecture## 🏗️ System Architecture
 
+### 📋 Prerequisites
 
 
-``````
+
+- ✅ Node.js 18+ ([Download](https://nodejs.org/))
+
+- ✅ Docker & Docker Compose ([Install](https://docker.com/))``````
+
+- ✅ Git ([Download](https://git-scm.com/))
 
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+
+### ⚡ Step-by-Step Installation
 
 │   Collectors    │    │    Analyzer     │    │    Storage      ││   Collectors    │    │    Analyzer     │    │    Storage      │
 
-│                 │    │                 │    │                 ││                 │    │                 │    │                 │
+#### 1. **Clone the Repository**
 
-│ • Base RPC      │───▶│ • Gini Analysis │───▶│ • PostgreSQL    ││ • Base RPC      │───▶│ • Gini Analysis │───▶│ • PostgreSQL    │
+```bash│                 │    │                 │    │                 ││                 │    │                 │    │                 │
+
+git clone https://github.com/Adrijan-Petek/base-monitor.git
+
+cd base-monitor│ • Base RPC      │───▶│ • Gini Analysis │───▶│ • PostgreSQL    ││ • Base RPC      │───▶│ • Gini Analysis │───▶│ • PostgreSQL    │
+
+```
 
 │ • Farcaster API │    │ • Anomaly       │    │ • Time-series   ││ • Farcaster API │    │ • Anomaly       │    │ • Time-series   │
 
-│ • Contract Scan │    │   Detection     │    │ • Indexed       ││ • Contract Scan │    │   Detection     │    │ • Indexed       │
+#### 2. **Install Dependencies**
 
-└─────────────────┘    └─────────────────┘    └─────────────────┘└─────────────────┘    └─────────────────┘    └─────────────────┘
+```bash│ • Contract Scan │    │   Detection     │    │ • Indexed       ││ • Contract Scan │    │   Detection     │    │ • Indexed       │
 
-         │                       │                       │         │                       │                       │
+npm ci
 
-         ▼                       ▼                       ▼         ▼                       ▼                       ▼
+```└─────────────────┘    └─────────────────┘    └─────────────────┘└─────────────────┘    └─────────────────┘    └─────────────────┘
+
+
+
+#### 3. **Configure Environment**         │                       │                       │         │                       │                       │
+
+```bash
+
+cp .env.example .env         ▼                       ▼                       ▼         ▼                       ▼                       ▼
+
+```
 
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 
-│   Web Dashboard │    │   Alert System  │    │   API Endpoints ││   Web Dashboard │    │   Alert System  │    │   API Endpoints │
+Edit `.env` with your settings:
 
-│                 │    │                 │    │                 ││                 │    │                 │    │                 │
+```bash│   Web Dashboard │    │   Alert System  │    │   API Endpoints ││   Web Dashboard │    │   Alert System  │    │   API Endpoints │
 
-│ • Real-time     │◀───│ • Email/Slack   │    │ • REST API      ││ • Real-time     │◀───│ • Email/Slack   │    │ • REST API      │
+# Database
+
+DATABASE_URL=postgres://postgres:postgres@localhost:5432/base_monitor│                 │    │                 │    │                 ││                 │    │                 │    │                 │
+
+
+
+# Blockchain│ • Real-time     │◀───│ • Email/Slack   │    │ • REST API      ││ • Real-time     │◀───│ • Email/Slack   │    │ • REST API      │
+
+BASE_RPC=https://mainnet.base.org
 
 │ • Charts        │    │ • Thresholds    │    │ • WebSocket     ││ • Charts        │    │ • Thresholds    │    │ • WebSocket     │
 
-│ • Mobile Ready  │    │ • Auto-scaling  │    │ • CORS Enabled  ││ • Mobile Ready  │    │ • Auto-scaling  │    │ • CORS Enabled  │
+# Optional: Farcaster API (recommended)
+
+NEYNAR_API_KEY=your_neynar_api_key_here│ • Mobile Ready  │    │ • Auto-scaling  │    │ • CORS Enabled  ││ • Mobile Ready  │    │ • Auto-scaling  │    │ • CORS Enabled  │
+
+```
 
 └─────────────────┘    └─────────────────┘    └─────────────────┘└─────────────────┘    └─────────────────┘    └─────────────────┘
 
-``````
+#### 4. **Start Database**
+
+```bash``````
+
+docker-compose up -d db
+
+```
 
 
 
-### 🧩 Components### 🧩 Components
+Wait for PostgreSQL to be ready (~30 seconds)### 🧩 Components### 🧩 Components
 
 
 
-| Component | Purpose | Technology || Component | Purpose | Technology |
+#### 5. **Initialize Database Schema**
 
-|-----------|---------|------------||-----------|---------|------------|
+```bash
 
-| **Collectors** | Data ingestion from blockchain & social APIs | ethers.js, axios || **Collectors** | Data ingestion from blockchain & social APIs | ethers.js, axios |
+# The API server will auto-create tables on first run| Component | Purpose | Technology || Component | Purpose | Technology |
 
-| **Analyzer** | Statistical analysis & anomaly detection | Custom algorithms || **Analyzer** | Statistical analysis & anomaly detection | Custom algorithms |
+npm run api
 
-| **Storage** | Time-series data persistence | PostgreSQL || **Storage** | Time-series data persistence | PostgreSQL |
-
-| **Dashboard** | Real-time visualization | HTML5, CSS3, JavaScript || **Dashboard** | Real-time visualization | HTML5, CSS3, JavaScript |
-
-| **API** | REST endpoints for data access | Express.js || **API** | REST endpoints for data access | Express.js |
+```|-----------|---------|------------||-----------|---------|------------|
 
 
 
-------
+#### 6. **🎉 Launch Dashboard**| **Collectors** | Data ingestion from blockchain & social APIs | ethers.js, axios || **Collectors** | Data ingestion from blockchain & social APIs | ethers.js, axios |
 
 
 
-## 🚀 Quick Start## 🚀 Quick Start
+Open [http://localhost:3001](http://localhost:3001) in your browser!| **Analyzer** | Statistical analysis & anomaly detection | Custom algorithms || **Analyzer** | Statistical analysis & anomaly detection | Custom algorithms |
 
 
+
+---| **Storage** | Time-series data persistence | PostgreSQL || **Storage** | Time-series data persistence | PostgreSQL |
+
+
+
+## 📊 Live Dashboard| **Dashboard** | Real-time visualization | HTML5, CSS3, JavaScript || **Dashboard** | Real-time visualization | HTML5, CSS3, JavaScript |
+
+
+
+<div align="center">| **API** | REST endpoints for data access | Express.js || **API** | REST endpoints for data access | Express.js |
+
+
+
+### 🌟 Dashboard Features
+
+
+
+| Feature | Description |------
+
+|---------|-------------|
+
+| **📈 Real-time Charts** | Live reward distribution visualizations |
+
+| **🎯 Multi-Platform Analysis** | Separate sections for Base, Farcaster, and Builder programs |
+
+| **🚨 Risk Assessment** | Color-coded alerts for manipulation detection |## 🚀 Quick Start## 🚀 Quick Start
+
+| **🏆 Leaderboards** | Top recipients and concentration analysis |
+
+| **📱 Responsive Design** | Works perfectly on desktop and mobile |
+
+| **🔄 Auto-refresh** | Data updates every 5 minutes |
 
 Get Base Monitor running in **5 minutes**! Here's the complete setup process:Get Base Monitor running in **5 minutes**! Here's the complete setup process:
 
-
-
-### 📋 Prerequisites### 📋 Prerequisites
-
-
-
-- ✅ Node.js 18+ ([Download](https://nodejs.org/))- ✅ Node.js 18+ ([Download](https://nodejs.org/))
-
-- ✅ Docker & Docker Compose ([Install](https://docker.com/))- ✅ Docker & Docker Compose ([Install](https://docker.com/))
-
-- ✅ Git ([Download](https://git-scm.com/))- ✅ Git ([Download](https://git-scm.com/))
+### 📱 Dashboard Preview
 
 
 
-### ⚡ Step-by-Step Installation### ⚡ Step-by-Step Installation
+```
+
+┌─────────────────────────────────────────────────────────────┐### 📋 Prerequisites### 📋 Prerequisites
+
+│                    🎯 Base Monitor Dashboard                 │
+
+├─────────────────────────────────────────────────────────────┤
+
+│                                                             │
+
+│  📊 Reward Distribution Analysis                           │- ✅ Node.js 18+ ([Download](https://nodejs.org/))- ✅ Node.js 18+ ([Download](https://nodejs.org/))
+
+│  ┌─────────────────────────────────────────────────────┐    │
+
+│  │                    [Gini Coefficient Chart]         │    │- ✅ Docker & Docker Compose ([Install](https://docker.com/))- ✅ Docker & Docker Compose ([Install](https://docker.com/))
+
+│  │                     ▲                                │    │
+
+│  │                    ████  0.85                        │    │- ✅ Git ([Download](https://git-scm.com/))- ✅ Git ([Download](https://git-scm.com/))
+
+│  │                   ████████                            │    │
+
+│  │                  ███████████                          │    │
+
+│  │                 ██████████████                        │    │
+
+│  │            ████████████████████                      │    │### ⚡ Step-by-Step Installation### ⚡ Step-by-Step Installation
+
+│  └─────────────────────────────────────────────────────┘    │
+
+│                                                             │
+
+│  🚨 Alert Status: 🟢 Normal Distribution                    │
+
+│                                                             │#### 1. **Clone the Repository**#### 1. **Clone the Repository**
+
+│  🏆 Top Recipients (Last 24h)                              │
+
+│  ┌─────────────────────────────────────────────────────┐    │```bash```bash
+
+│  │ 1. 0x1234...abcd    15,420 BASE ($2,340)           │    │
+
+│  │ 2. 0x5678...efgh     8,920 BASE ($1,280)           │    │git clone https://github.com/Adrijan-Petek/base-monitor.gitgit clone https://github.com/Adrijan-Petek/base-monitor.git
+
+│  │ 3. 0x9abc...ijkl     6,150 BASE ($890)             │    │
+
+│  └─────────────────────────────────────────────────────┘    │cd base-monitorcd base-monitor
+
+│                                                             │
+
+│  🔗 Platform Breakdown                                     │``````
+
+│  ┌─────────────────┬────────────┬─────────────────────┐    │
+
+│  │ Farcaster       │ Base App   │ Base Builder        │    │
+
+│  │ 3 contracts     │ 1 contract │ 1 contract          │    │
+
+│  │ 12,450 rewards  │ 8,320 rew. │ 25,180 rewards      │    │#### 2. **Install Dependencies**#### 2. **Install Dependencies**
+
+│  └─────────────────┴────────────┴─────────────────────┘    │
+
+│                                                             │```bash```bash
+
+└─────────────────────────────────────────────────────────────┘
+
+```npm cinpm ci
 
 
 
-#### 1. **Clone the Repository**#### 1. **Clone the Repository**
+### Live Dashboard``````
 
-```bash```bash
-
-git clone https://github.com/Adrijan-Petek/base-monitor.gitgit clone https://github.com/Adrijan-Petek/base-monitor.git
-
-cd base-monitorcd base-monitor
-
-``````
+Once deployed, the dashboard will be available at: `https://base-monitor-2fpmey31e-adrijangithubgmailcoms-projects.vercel.app`
 
 
 
-#### 2. **Install Dependencies**#### 2. **Install Dependencies**
-
-```bash```bash
-
-npm cinpm ci
-
-``````
-
-
+</div>
 
 #### 3. **Configure Environment**#### 3. **Configure Environment**
 
+---
+
 ```bash```bash
+
+## 📖 Documentation
 
 cp .env.example .envcp .env.example .env
 
-``````
-
-
-
-Edit `.env` with your settings:Edit `.env` with your settings:
-
-```bash```bash
-
-# Database# Database
-
-DATABASE_URL=postgres://postgres:postgres@localhost:5432/base_monitorDATABASE_URL=postgres://postgres:postgres@localhost:5432/base_monitor
-
-
-
-# Blockchain# Blockchain
-
-BASE_RPC=https://mainnet.base.orgBASE_RPC=https://mainnet.base.org
-
-
-
-# Optional: Farcaster API (recommended)# Optional: Farcaster API (recommended)
-
-NEYNAR_API_KEY=your_neynar_api_key_hereNEYNAR_API_KEY=your_neynar_api_key_here
+### 🎮 Available Commands
 
 ``````
 
+| Command | Description | Usage |
+
+|---------|-------------|-------|
+
+| `npm run api` | Start web dashboard | Development server |
+
+| `npm run daily-scan` | Complete monitoring cycle | Automated daily scans |Edit `.env` with your settings:Edit `.env` with your settings:
+
+| `npm run scan-contracts` | Discover new contracts | Auto-updates config |
+
+| `npm test` | Run test suite | Quality assurance |```bash```bash
+
+| `npm run setup-retention` | Configure data retention | One-time setup |
+
+| `npm run cleanup` | Manual data cleanup | Optional maintenance |# Database# Database
 
 
-#### 4. **Start Database**#### 4. **Start Database**
 
-```bash```bash
+### 🔧 Configuration OptionsDATABASE_URL=postgres://postgres:postgres@localhost:5432/base_monitorDATABASE_URL=postgres://postgres:postgres@localhost:5432/base_monitor
 
-docker-compose up -d dbdocker-compose up -d db
+
+
+| Variable | Description | Default | Required |
+
+|----------|-------------|---------|----------|
+
+| `DATABASE_URL` | PostgreSQL connection string | `postgres://postgres:postgres@db:5432/base_monitor` | ✅ |# Blockchain# Blockchain
+
+| `BASE_RPC` | Base network RPC endpoint | `https://mainnet.base.org` | ✅ |
+
+| `FARCASTER_API_URL` | Farcaster API endpoint | `https://api.warpcast.com/v2/recent-casts` | ❌ |BASE_RPC=https://mainnet.base.orgBASE_RPC=https://mainnet.base.org
+
+| `NEYNAR_API_KEY` | Neynar API key for reliable data | - | ❌ |
+
+| `SCAN_BLOCKS` | Blocks to scan for contracts | `1000` | ❌ |
+
+| `ALERT_TOP_SHARE` | Alert threshold (0-1) | `0.5` | ❌ |
+
+| `ALERT_WINDOW_HOURS` | Analysis window | `24` | ❌ |# Optional: Farcaster API (recommended)# Optional: Farcaster API (recommended)
+
+
+
+### 🤖 Contract ScannerNEYNAR_API_KEY=your_neynar_api_key_hereNEYNAR_API_KEY=your_neynar_api_key_here
+
+
+
+Automatically discover and categorize reward contracts:``````
+
+
+
+```bash
+
+npm run scan-contracts
+
+```#### 4. **Start Database**#### 4. **Start Database**
+
+
+
+**What it finds:**```bash```bash
+
+- ✅ **Farcaster**: Social reward contracts
+
+- ✅ **Base App**: Mini-app reward contractsdocker-compose up -d dbdocker-compose up -d db
+
+- ✅ **Base Builder**: Developer incentive contracts
 
 ``````
 
+**Current Status:**
+
+- 🔍 **5 Farcaster contracts** monitored
+
+- 🔍 **1 Base App contract** monitored
+
+- 🔍 **1 Base Builder contract** monitoredWait for PostgreSQL to be ready (~30 seconds)Wait for PostgreSQL to be ready (~30 seconds)
+
+- 🔍 **7 total contracts** tracked
 
 
-Wait for PostgreSQL to be ready (~30 seconds)Wait for PostgreSQL to be ready (~30 seconds)
 
-
+---
 
 #### 5. **Initialize Database Schema**#### 5. **Initialize Database Schema**
 
+## 🐳 Docker Deployment
+
 ```bash```bash
+
+### Local Development
 
 # The API server will auto-create tables on first run# The API server will auto-create tables on first run
 
-npm run apinpm run api
+```bash
+
+# Start all servicesnpm run apinpm run api
+
+docker-compose up
 
 ``````
 
+# Run in background
+
+docker-compose up -d
 
 
-#### 6. **🎉 Launch Dashboard**#### 6. **🎉 Launch Dashboard**
+
+# View application logs#### 6. **🎉 Launch Dashboard**#### 6. **🎉 Launch Dashboard**
+
+docker-compose logs -f app
 
 
 
-Open [http://localhost:3001](http://localhost:3001) in your browser!Open [http://localhost:3001](http://localhost:3001) in your browser!
+# Stop all services
+
+docker-compose downOpen [http://localhost:3001](http://localhost:3001) in your browser!Open [http://localhost:3001](http://localhost:3001) in your browser!
+
+```
 
 
+
+### Production Deployment
 
 ------
 
-
-
-## 📊 Live Dashboard## 📊 Live Dashboard
-
-
-
-<div align="center"><div align="center">
+#### Option 1: Vercel (Recommended)
 
 
 
-### 🌟 Dashboard Features### 🌟 Dashboard Features
+1. **Install Vercel CLI:**
+
+   ```bash## 📊 Live Dashboard## 📊 Live Dashboard
+
+   npm i -g vercel
+
+   ```
 
 
+
+2. **Deploy:**<div align="center"><div align="center">
+
+   ```bash
+
+   vercel login
+
+   vercel link
+
+   vercel --prod### 🌟 Dashboard Features### 🌟 Dashboard Features
+
+   ```
+
+
+
+3. **Set Environment Variables** in Vercel dashboard
 
 | Feature | Description || Feature | Description |
 
+#### Option 2: Docker Compose
+
 |---------|-------------||---------|-------------|
 
-| **📈 Real-time Charts** | Live reward distribution visualizations || **📈 Real-time Charts** | Live reward distribution visualizations |
+```bash
+
+# Production compose file| **📈 Real-time Charts** | Live reward distribution visualizations || **📈 Real-time Charts** | Live reward distribution visualizations |
+
+docker-compose -f docker-compose.prod.yml up -d
 
 | **🎯 Multi-Platform Analysis** | Separate sections for Base, Farcaster, and Builder programs || **🎯 Multi-Platform Analysis** | Separate sections for Base, Farcaster, and Builder programs |
 
-| **🚨 Risk Assessment** | Color-coded alerts for manipulation detection || **🚨 Risk Assessment** | Color-coded alerts for manipulation detection |
+# With external PostgreSQL
 
-| **🏆 Leaderboards** | Top recipients and concentration analysis || **🏆 Leaderboards** | Top recipients and concentration analysis |
+export DATABASE_URL="postgres://user:pass@host:5432/db"| **🚨 Risk Assessment** | Color-coded alerts for manipulation detection || **🚨 Risk Assessment** | Color-coded alerts for manipulation detection |
 
-| **📱 Responsive Design** | Works perfectly on desktop and mobile || **📱 Responsive Design** | Works perfectly on desktop and mobile |
+docker-compose -f docker-compose.prod.yml up -d
 
-| **🔄 Auto-refresh** | Data updates every 5 minutes || **🔄 Auto-refresh** | Data updates every 5 minutes |
-
-
-
-### 📱 Dashboard Preview### 📱 Dashboard Preview
+```| **🏆 Leaderboards** | Top recipients and concentration analysis || **🏆 Leaderboards** | Top recipients and concentration analysis |
 
 
 
-``````
+---| **📱 Responsive Design** | Works perfectly on desktop and mobile || **📱 Responsive Design** | Works perfectly on desktop and mobile |
 
-┌─────────────────────────────────────────────────────────────┐┌─────────────────────────────────────────────────────────────┐
 
-│                    🎯 Base Monitor Dashboard                 ││                    🎯 Base Monitor Dashboard                 │
 
-├─────────────────────────────────────────────────────────────┤├─────────────────────────────────────────────────────────────┤
+## 🔍 Data Analysis| **🔄 Auto-refresh** | Data updates every 5 minutes || **🔄 Auto-refresh** | Data updates every 5 minutes |
+
+
+
+### 📈 Gini Coefficient Analysis
+
+
+
+The system calculates Gini coefficients to measure reward distribution inequality:### 📱 Dashboard Preview### 📱 Dashboard Preview
+
+
+
+- **0.0**: Perfect equality (everyone gets the same)
+
+- **1.0**: Perfect inequality (one recipient gets everything)
+
+- **Alert Threshold**: Configurable (default: 0.5)``````
+
+
+
+### 🚨 Anomaly Detection┌─────────────────────────────────────────────────────────────┐┌─────────────────────────────────────────────────────────────┐
+
+
+
+Automatic alerts for suspicious patterns:│                    🎯 Base Monitor Dashboard                 ││                    🎯 Base Monitor Dashboard                 │
+
+- **Concentration Alerts**: Single recipient exceeds threshold
+
+- **Sudden Spikes**: Unusual reward volume increases├─────────────────────────────────────────────────────────────┤├─────────────────────────────────────────────────────────────┤
+
+- **Pattern Changes**: Statistical distribution shifts
 
 │                                                             ││                                                             │
+
+### 📊 Database Schema
 
 │  📊 Reward Distribution Analysis                           ││  📊 Reward Distribution Analysis                           │
 
-│  ┌─────────────────────────────────────────────────────┐    ││  ┌─────────────────────────────────────────────────────┐    │
+```sql
 
-│  │                    [Gini Coefficient Chart]         │    ││  │                    [Gini Coefficient Chart]         │    │
+-- Reward events from blockchain│  ┌─────────────────────────────────────────────────────┐    ││  ┌─────────────────────────────────────────────────────┐    │
 
-│  │                     ▲                                │    ││  │                     ▲                                │    │
+CREATE TABLE reward_events (
 
-│  │                    ████  0.85                        │    ││  │                    ████  0.85                        │    │
+  id SERIAL PRIMARY KEY,│  │                    [Gini Coefficient Chart]         │    ││  │                    [Gini Coefficient Chart]         │    │
 
-│  │                   ████████                            │    ││  │                   ████████                            │    │
+  block_number BIGINT NOT NULL,
 
-│  │                  ███████████                          │    ││  │                  ███████████                          │    │
+  tx_hash VARCHAR(66) NOT NULL,│  │                     ▲                                │    ││  │                     ▲                                │    │
 
-│  │                 ██████████████                        │    ││  │                 ██████████████                        │    │
+  contract_address VARCHAR(42) NOT NULL,
 
-│  │            ████████████████████                      │    ││  │            ████████████████████                      │    │
+  topics JSONB,│  │                    ████  0.85                        │    ││  │                    ████  0.85                        │    │
 
-│  └─────────────────────────────────────────────────────┘    ││  └─────────────────────────────────────────────────────┘    │
+  data TEXT,
 
-│                                                             ││                                                             │
+  block_timestamp TIMESTAMP,│  │                   ████████                            │    ││  │                   ████████                            │    │
 
-│  🚨 Alert Status: 🟢 Normal Distribution                    ││  🚨 Alert Status: 🟢 Normal Distribution                    │
+  inserted_at TIMESTAMP DEFAULT NOW()
 
-│                                                             ││                                                             │
+);│  │                  ███████████                          │    ││  │                  ███████████                          │    │
 
-│  🏆 Top Recipients (Last 24h)                              ││  🏆 Top Recipients (Last 24h)                              │
 
-│  ┌─────────────────────────────────────────────────────┐    ││  ┌─────────────────────────────────────────────────────┐    │
 
-│  │ 1. 0x1234...abcd    15,420 BASE ($2,340)           │    ││  │ 1. 0x1234...abcd    15,420 BASE ($2,340)           │    │
+-- Farcaster social activity│  │                 ██████████████                        │    ││  │                 ██████████████                        │    │
 
-│  │ 2. 0x5678...efgh     8,920 BASE ($1,280)           │    ││  │ 2. 0x5678...efgh     8,920 BASE ($1,280)           │    │
+CREATE TABLE farcaster_casts (
 
-│  │ 3. 0x9abc...ijkl     6,150 BASE ($890)             │    ││  │ 3. 0x9abc...ijkl     6,150 BASE ($890)             │    │
+  id VARCHAR(100) PRIMARY KEY,│  │            ████████████████████                      │    ││  │            ████████████████████                      │    │
 
-│  └─────────────────────────────────────────────────────┘    ││  └─────────────────────────────────────────────────────┘    │
+  body JSONB,
 
-│                                                             ││                                                             │
+  author JSONB,│  └─────────────────────────────────────────────────────┘    ││  └─────────────────────────────────────────────────────┘    │
+
+  timestamp TIMESTAMP,
+
+  inserted_at TIMESTAMP DEFAULT NOW()│                                                             ││                                                             │
+
+);
+
+```│  🚨 Alert Status: 🟢 Normal Distribution                    ││  🚨 Alert Status: 🟢 Normal Distribution                    │
+
+
+
+---│                                                             ││                                                             │
+
+
+
+## 🧪 Testing│  🏆 Top Recipients (Last 24h)                              ││  🏆 Top Recipients (Last 24h)                              │
+
+
+
+Run the comprehensive test suite:│  ┌─────────────────────────────────────────────────────┐    ││  ┌─────────────────────────────────────────────────────┐    │
+
+
+
+```bash│  │ 1. 0x1234...abcd    15,420 BASE ($2,340)           │    ││  │ 1. 0x1234...abcd    15,420 BASE ($2,340)           │    │
+
+npm test
+
+```│  │ 2. 0x5678...efgh     8,920 BASE ($1,280)           │    ││  │ 2. 0x5678...efgh     8,920 BASE ($1,280)           │    │
+
+
+
+Tests cover:│  │ 3. 0x9abc...ijkl     6,150 BASE ($890)             │    ││  │ 3. 0x9abc...ijkl     6,150 BASE ($890)             │    │
+
+- ✅ Gini coefficient calculations
+
+- ✅ Data validation and parsing│  └─────────────────────────────────────────────────────┘    ││  └─────────────────────────────────────────────────────┘    │
+
+- ✅ Error handling scenarios
+
+- ✅ Integration test suites│                                                             ││                                                             │
+
+- ✅ API endpoint validation
 
 │  🔗 Platform Breakdown                                     ││  🔗 Platform Breakdown                                     │
 
+---
+
 │  ┌─────────────────┬────────────┬─────────────────────┐    ││  ┌─────────────────┬────────────┬─────────────────────┐    │
+
+## 🔄 Automated Daily Scanning
 
 │  │ Farcaster       │ Base App   │ Base Builder        │    ││  │ Farcaster       │ Base App   │ Base Builder        │    │
 
+Base Monitor includes **automated daily scanning** using GitHub Actions to keep your analysis data fresh without manual intervention.
+
 │  │ 3 contracts     │ 1 contract │ 1 contract          │    ││  │ 3 contracts     │ 1 contract │ 1 contract          │    │
+
+### ⚙️ Setup GitHub Actions Secrets
 
 │  │ 12,450 rewards  │ 8,320 rew. │ 25,180 rewards      │    ││  │ 12,450 rewards  │ 8,320 rew. │ 25,180 rewards      │    │
 
+In your GitHub repository settings, add these secrets:
+
 │  └─────────────────┴────────────┴─────────────────────┘    ││  └─────────────────┴────────────┴─────────────────────┘    │
 
-│                                                             ││                                                             │
+| Secret Name | Description | Example |
 
-└─────────────────────────────────────────────────────────────┘└─────────────────────────────────────────────────────────────┘
+|-------------|-------------|---------|│                                                             ││                                                             │
+
+| `DATABASE_URL` | PostgreSQL connection string | `postgres://user:pass@host:5432/db` |
+
+| `BASE_RPC` | Base network RPC endpoint | `https://mainnet.base.org` |└─────────────────────────────────────────────────────────────┘└─────────────────────────────────────────────────────────────┘
+
+| `REWARD_CONTRACTS` | Comma-separated contract addresses | `0x123...,0x456...` |
 
 ``````
 
+### ⏰ How It Works
 
 
-### Live Dashboard### Live Dashboard
 
-Once deployed, the dashboard will be available at: `https://base-monitor-2fpmey31e-adrijangithubgmailcoms-projects.vercel.app`Once deployed, the dashboard will be available at: `https://base-monitor-2fpmey31e-adrijangithubgmailcoms-projects.vercel.app`
+1. **Daily Schedule**: GitHub Actions runs automatically every day at 02:00 UTC
+
+2. **Data Collection**: Scans Base blockchain for new reward transfers### Live Dashboard### Live Dashboard
+
+3. **Analysis**: Performs manipulation detection and Gini coefficient analysis
+
+4. **Auto-Deploy**: Commits updated results and triggers Vercel redeploymentOnce deployed, the dashboard will be available at: `https://base-monitor-2fpmey31e-adrijangithubgmailcoms-projects.vercel.app`Once deployed, the dashboard will be available at: `https://base-monitor-2fpmey31e-adrijangithubgmailcoms-projects.vercel.app`
+
+5. **Fresh Data**: Your dashboard always shows the latest analysis
 
 
+
+### 🛠️ Manual Trigger
 
 </div></div>
 
+You can also trigger scans manually:
 
-
-------
-
-
-
-## 📖 Documentation## 📖 Documentation
+- Go to GitHub Actions → "Daily Base Reward Scan" → "Run workflow"
 
 
 
-### 🎮 Available Commands### 🎮 Available Commands
+---------
 
 
 
-| Command | Description | Usage || Command | Description | Usage |
+## 🤝 Contributing
 
-|---------|-------------|-------||---------|-------------|-------|
 
-| `npm run api` | Start web dashboard | Development server || `npm run api` | Start web dashboard | Development server |
 
-| `npm run daily-scan` | Complete monitoring cycle | Automated daily scans || `npm run daily-scan` | Complete monitoring cycle | Automated daily scans |
+We welcome contributions! Here's how to get started:## 📖 Documentation## 📖 Documentation
 
-| `npm run scan-contracts` | Discover new contracts | Auto-updates config || `npm run scan-contracts` | Discover new contracts | Auto-updates config |
+
+
+### 📋 Development Workflow
+
+
+
+1. **Fork the repository**### 🎮 Available Commands### 🎮 Available Commands
+
+2. **Create feature branch:** ```bash
+
+git checkout -b feature/your-awesome-feature
+
+```
+
+3. **Make changes and add tests**| Command | Description | Usage || Command | Description | Usage |
+
+4. **Run tests:** ```bash
+
+npm test|---------|-------------|-------||---------|-------------|-------|
+
+```
+
+5. **Commit changes:** ```bash| `npm run api` | Start web dashboard | Development server || `npm run api` | Start web dashboard | Development server |
+
+git commit -am 'Add awesome feature ✨'
+
+```| `npm run daily-scan` | Complete monitoring cycle | Automated daily scans || `npm run daily-scan` | Complete monitoring cycle | Automated daily scans |
+
+6. **Push and create PR:** ```bash
+
+git push origin feature/your-awesome-feature| `npm run scan-contracts` | Discover new contracts | Auto-updates config || `npm run scan-contracts` | Discover new contracts | Auto-updates config |
+
+```
 
 | `npm test` | Run test suite | Quality assurance || `npm test` | Run test suite | Quality assurance |
 
+### 🎯 Development Guidelines
+
 | `npm run setup-retention` | Configure data retention | One-time setup || `npm run setup-retention` | Configure data retention | One-time setup |
 
-| `npm run cleanup` | Manual data cleanup | Optional maintenance || `npm run cleanup` | Manual data cleanup | Optional maintenance |
+- 🔹 Use ES modules throughout
 
+- 🔹 Follow conventional commits| `npm run cleanup` | Manual data cleanup | Optional maintenance || `npm run cleanup` | Manual data cleanup | Optional maintenance |
 
+- 🔹 Add unit tests for new features
+
+- 🔹 Update documentation
+
+- 🔹 Ensure code passes linting
 
 ### 🔧 Configuration Options### 🔧 Configuration Options
 
+### 🐛 Found a Bug?
 
 
-| Variable | Description | Default | Required || Variable | Description | Default | Required |
 
-|----------|-------------|---------|----------||----------|-------------|---------|----------|
+1. Check [existing issues](https://github.com/Adrijan-Petek/base-monitor/issues)
 
-| `DATABASE_URL` | PostgreSQL connection string | `postgres://postgres:postgres@db:5432/base_monitor` | ✅ || `DATABASE_URL` | PostgreSQL connection string | `postgres://postgres:postgres@db:5432/base_monitor` | ✅ |
+2. Create a new issue with:| Variable | Description | Default | Required || Variable | Description | Default | Required |
 
-| `BASE_RPC` | Base network RPC endpoint | `https://mainnet.base.org` | ✅ || `BASE_RPC` | Base network RPC endpoint | `https://mainnet.base.org` | ✅ |
+   - Clear title and description
 
-| `FARCASTER_API_URL` | Farcaster API endpoint | `https://api.warpcast.com/v2/recent-casts` | ❌ || `FARCASTER_API_URL` | Farcaster API endpoint | `https://api.warpcast.com/v2/recent-casts` | ❌ |
+   - Steps to reproduce|----------|-------------|---------|----------||----------|-------------|---------|----------|
 
-| `NEYNAR_API_KEY` | Neynar API key for reliable data | - | ❌ || `NEYNAR_API_KEY` | Neynar API key for reliable data | - | ❌ |
+   - Expected vs actual behavior
 
-| `SCAN_BLOCKS` | Blocks to scan for contracts | `1000` | ❌ || `SCAN_BLOCKS` | Blocks to scan for contracts | `1000` | ❌ |
+   - Environment details| `DATABASE_URL` | PostgreSQL connection string | `postgres://postgres:postgres@db:5432/base_monitor` | ✅ || `DATABASE_URL` | PostgreSQL connection string | `postgres://postgres:postgres@db:5432/base_monitor` | ✅ |
 
-| `ALERT_TOP_SHARE` | Alert threshold (0-1) | `0.5` | ❌ || `ALERT_TOP_SHARE` | Alert threshold (0-1) | `0.5` | ❌ |
 
-| `ALERT_WINDOW_HOURS` | Analysis window | `24` | ❌ || `ALERT_WINDOW_HOURS` | Analysis window | `24` | ❌ |
+
+---| `BASE_RPC` | Base network RPC endpoint | `https://mainnet.base.org` | ✅ || `BASE_RPC` | Base network RPC endpoint | `https://mainnet.base.org` | ✅ |
+
+
+
+## 📄 License| `FARCASTER_API_URL` | Farcaster API endpoint | `https://api.warpcast.com/v2/recent-casts` | ❌ || `FARCASTER_API_URL` | Farcaster API endpoint | `https://api.warpcast.com/v2/recent-casts` | ❌ |
+
+
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.| `NEYNAR_API_KEY` | Neynar API key for reliable data | - | ❌ || `NEYNAR_API_KEY` | Neynar API key for reliable data | - | ❌ |
+
+
+
+---| `SCAN_BLOCKS` | Blocks to scan for contracts | `1000` | ❌ || `SCAN_BLOCKS` | Blocks to scan for contracts | `1000` | ❌ |
+
+
+
+**Built with ❤️ for the Base ecosystem**| `ALERT_TOP_SHARE` | Alert threshold (0-1) | `0.5` | ❌ || `ALERT_TOP_SHARE` | Alert threshold (0-1) | `0.5` | ❌ |
+
+
+
+[⭐ Star us on GitHub](https://github.com/Adrijan-Petek/base-monitor) • [📖 Documentation](https://github.com/Adrijan-Petek/base-monitor/wiki) • [🐛 Report Issues](https://github.com/Adrijan-Petek/base-monitor/issues)| `ALERT_WINDOW_HOURS` | Analysis window | `24` | ❌ || `ALERT_WINDOW_HOURS` | Analysis window | `24` | ❌ |
 
 
 
