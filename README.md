@@ -150,7 +150,7 @@ graph TB
 
 ### 🎨 Dashboard Preview (Dark Mode)
 
-![Dashboard Preview](https://via.placeholder.com/900x400/1c1c1c/00ffcc?text=BASE+MONITOR+Dashboard+Preview)
+![Dashboard Preview](./capture.png)
 
 </div>
 
@@ -230,3 +230,4 @@ SKIP_FARCASTER=true
 ## 📄 License
 
 MIT License
+
