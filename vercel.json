@@ -4,5 +4,11 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "devCommand": null,
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "crons": [
+    {
+      "path": "/api/analysis",
+      "schedule": "0 9 * * *"
+    }
+  ]
 }

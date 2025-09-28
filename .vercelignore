@@ -79,7 +79,6 @@ dist
 
 # Gatsby files
 .cache/
-public
 
 # Storybook build outputs
 .out
@@ -116,7 +115,6 @@ Thumbs.db
 *~
 
 # Local development
-src/
 scripts/
 test/
 docker-compose.yml

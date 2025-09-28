@@ -1,4 +1,4 @@
-// Vercel API route handler
+// Vercel API route handler for /api/test
 export default function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -11,16 +11,8 @@ export default function handler(req, res) {
     return;
   }
 
-  // Handle different routes
-  if (req.url === '/api/test') {
-    res.status(200).json({
-      message: 'Base Monitor API is working!',
-      timestamp: new Date().toISOString()
-    });
-  } else {
-    res.status(404).json({
-      error: 'Not Found',
-      message: 'This API endpoint does not exist'
-    });
-  }
+  res.status(200).json({
+    message: 'Base Monitor API is working!',
+    timestamp: new Date().toISOString()
+  });
 }
