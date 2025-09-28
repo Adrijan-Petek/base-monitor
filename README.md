@@ -121,7 +121,7 @@ graph TB
 
     style A fill:#1e1e1e,stroke:#333,stroke-width:2px
     style C fill:#2a2a2a,stroke:#444,stroke-width:2px
-    style D fill:#1c1c1c,stroke:#222,stroke-width:2px
+    style D fill:#ff0000,stroke:#222,stroke-width:2px
 ```
 
 ### 🏛️ Architecture Components
@@ -230,5 +230,6 @@ SKIP_FARCASTER=true
 ## 📄 License
 
 MIT License
+
 
 
