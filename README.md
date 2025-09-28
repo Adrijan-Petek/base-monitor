@@ -197,7 +197,7 @@ npm start
 
 ### 🌐 Live Demo
 
-[Live Dashboard Preview](https://base-monitor-2fpmey31e-adrijangithubgmailcoms-projects.vercel.app)
+[Live Dashboard Preview](https://base-monitor.vercel.app/)
 
 ---
 
@@ -230,4 +230,5 @@ SKIP_FARCASTER=true
 ## 📄 License
 
 MIT License
+
 
